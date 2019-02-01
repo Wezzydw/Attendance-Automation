@@ -6,6 +6,7 @@
 package attendanceautomation.dal;
 
 import attendanceautomation.be.Student;
+import attendanceautomation.be.Teacher;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +18,15 @@ import java.util.List;
 public class MockData {
 
     private List<Student> students;
+    private List<Teacher> teachers;
 
     public MockData() {
+        
+        
+        teachers = new ArrayList();
         students = new ArrayList();
+        
+        teachers.add(new Teacher("Jeppe", "M", "JM", "123"));
 
         Student Tonny = new Student("Tonny", "Tonnesen", "tny123", "123");
         Tonny.addAttendanceDate(LocalDate.of(2019, 1, 29));
@@ -156,134 +163,139 @@ public class MockData {
         Trine.addAttendanceDate(LocalDate.of(2019, 2, 1));
         Trine.addAttendanceDate(LocalDate.of(2019, 2, 2));
         Trine.addAttendanceDate(LocalDate.of(2019, 2, 3));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 4));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 5));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 6));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 7));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 8));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 9));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 10));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 11));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 12));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 13));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 14));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 15));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 16));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 17));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 18));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 19));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 23));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 24));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 25));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 26));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 27));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 28));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 4));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 5));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 6));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 7));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 8));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 9));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 10));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 11));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 12));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 13));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 14));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 15));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 16));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 17));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 18));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 19));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 23));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 24));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 25));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 26));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 27));
+        Trine.addAttendanceDate(LocalDate.of(2019, 2, 28));
         students.add(Trine);
 
         Student Jack = new Student("Jack", "Black", "jckbck", "123");
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 1));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 2));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 3));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 4));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 5));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 1));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 2));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 3));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 4));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 5));
 
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 7));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 8));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 9));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 10));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 11));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 7));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 8));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 9));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 10));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 11));
 
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 13));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 14));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 15));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 16));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 17));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 18));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 13));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 14));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 15));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 16));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 17));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 18));
 
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 20));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 21));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 22));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 23));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 24));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 25));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 26));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 27));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 28));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 29));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 30));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 31));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 20));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 21));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 22));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 23));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 24));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 25));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 26));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 27));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 28));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 29));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 30));
+        Jack.addAttendanceDate(LocalDate.of(2019, 1, 31));
 
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 2));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 3));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 4));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 5));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 6));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 7));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 8));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 9));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 10));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 11));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 12));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 2));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 3));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 4));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 5));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 6));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 7));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 8));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 9));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 10));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 11));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 12));
 
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 14));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 15));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 16));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 17));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 18));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 19));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 20));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 21));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 22));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 23));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 24));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 25));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 14));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 15));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 16));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 17));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 18));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 19));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 20));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 21));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 22));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 23));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 24));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 25));
 
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 28));
+        Jack.addAttendanceDate(LocalDate.of(2019, 2, 28));
         students.add(Jack);
 
         Student Lise = new Student("Lise", "Meyrup", "LM", "123");
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 1));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 2));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 3));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 6));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 7));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 1));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 2));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 3));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 6));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 7));
 
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 10));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 11));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 10));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 11));
 
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 14));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 15));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 16));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 17));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 14));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 15));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 16));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 17));
 
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 20));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 21));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 22));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 25));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 28));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 31));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 1));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 2));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 3));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 6));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 7));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 10));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 11));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 14));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 17));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 18));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 19));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 20));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 23));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 26));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 27));
-        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 28));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 20));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 21));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 22));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 25));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 28));
+        Lise.addAttendanceDate(LocalDate.of(2019, 1, 31));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 1));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 2));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 3));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 6));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 7));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 10));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 11));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 14));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 17));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 18));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 19));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 20));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 23));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 26));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 27));
+        Lise.addAttendanceDate(LocalDate.of(2019, 2, 28));
         students.add(Lise);
 
     }
 
     public List<Student> getAllStudents() {
         return students;
+    }
+    
+    public List<Teacher> getAllTeachers()
+    {
+        return teachers;
     }
 
 }
