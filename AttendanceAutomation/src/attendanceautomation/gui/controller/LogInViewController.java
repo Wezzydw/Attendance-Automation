@@ -11,17 +11,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 /**
  *
  * @author Wezzy Laptop
  */
-public class FXMLDocumentController implements Initializable {
+public class LogInViewController implements Initializable {
     
-    @FXML
     private Label label;
-    
     @FXML
+    private TextField txtUser;
+    @FXML
+    private PasswordField txtPassword;
+    
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText("Hello World!");
@@ -31,5 +35,15 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void handleLogIn(ActionEvent event)
+    {
+    }
+
+    @FXML
+    private void handleCancel(ActionEvent event)
+    {
+    }
     
 }
