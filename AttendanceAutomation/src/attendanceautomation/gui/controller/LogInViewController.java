@@ -5,6 +5,7 @@
  */
 package attendanceautomation.gui.controller;
 
+import attendanceautomation.be.Student;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -26,19 +27,32 @@ public class LogInViewController implements Initializable {
     @FXML
     private PasswordField txtPassword;
     
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+    private Model model;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+//        model = new Model(); // giver en error i teacher classen
     }    
 
     @FXML
     private void handleLogIn(ActionEvent event)
     {
+        System.out.println("user = " + txtUser.getText());
+        System.out.println("password = " + txtPassword.getText());
+//        for (Student student : model.getAllStudents())
+//        {
+//            if(txtUser.getText().toLowerCase().equals(student.getUsername()) && txtPassword.getText().equals(student.getPassword()))
+//            {
+//                System.out.println(student.getFirstName() + " " + student.getLastName() + " has logged in");
+//            }
+//        }
+        
+            if (txtUser.getText().toLowerCase().equals("admin") && txtPassword.getText().equals("Admin"))
+            {
+                System.out.println("admin logged in");
+            }
+        
     }
 
     @FXML
