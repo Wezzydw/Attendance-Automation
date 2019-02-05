@@ -8,6 +8,7 @@ package attendanceautomation.be;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -16,11 +17,11 @@ import javafx.beans.property.StringProperty;
  */
 public class Teacher {
 
-    private StringProperty firstName;
-    private StringProperty lastName;
-    private StringProperty username;
-    private StringProperty password;
-
+    private StringProperty firstName = new SimpleStringProperty();
+    private StringProperty lastName = new SimpleStringProperty();
+    private StringProperty username = new SimpleStringProperty();
+    private StringProperty password = new SimpleStringProperty();
+    
     public Teacher(String firstName, String lastName, String username, String password) {
         this.firstName.set(firstName);
         this.lastName.set(lastName);
@@ -37,7 +38,7 @@ public class Teacher {
     }
 
     public boolean getTeacher(String username, String password) {
-        if (username.equals(this.username) && password.equals(password)) {
+        if (username.equals(this.username.getValue()) && password.equals(this.password.getValue())) {
             return true;
         } else {
             return false;

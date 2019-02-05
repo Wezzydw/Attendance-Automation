@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -17,10 +18,10 @@ import javafx.beans.property.StringProperty;
  */
 public class Student {
     
-    private StringProperty firstName;
-    private StringProperty lastName;
-    private StringProperty username;
-    private StringProperty password;
+    private StringProperty firstName = new SimpleStringProperty();
+    private StringProperty lastName = new SimpleStringProperty();
+    private StringProperty username = new SimpleStringProperty();
+    private StringProperty password = new SimpleStringProperty();
     private List<LocalDate> attendanceList;
     
     
@@ -44,10 +45,11 @@ public class Student {
     }
     
     public boolean getStudent(String username, String password)
-    {
-        if (username.equals(this.username) && password.equals(password))
+    {   
+        if (username.equals(this.username.getValue()) && password.equals(this.password.getValue()))
             return true;
-        else return false;
+        else 
+            return false;
     }
     
     public List<LocalDate> getAttendanceDates()

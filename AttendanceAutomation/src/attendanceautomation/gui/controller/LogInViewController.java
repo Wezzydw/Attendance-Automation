@@ -6,6 +6,7 @@
 package attendanceautomation.gui.controller;
 
 import attendanceautomation.be.Student;
+import attendanceautomation.be.Teacher;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  *
@@ -32,32 +34,34 @@ public class LogInViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-//        model = new Model(); // giver en error i teacher classen
+        model = new Model(); // giver en error i teacher classen
     }    
 
     @FXML
     private void handleLogIn(ActionEvent event)
     {
-        System.out.println("user = " + txtUser.getText());
-        System.out.println("password = " + txtPassword.getText());
-//        for (Student student : model.getAllStudents())
-//        {
-//            if(txtUser.getText().toLowerCase().equals(student.getUsername()) && txtPassword.getText().equals(student.getPassword()))
-//            {
-//                System.out.println(student.getFirstName() + " " + student.getLastName() + " has logged in");
-//            }
-//        }
-        
-            if (txtUser.getText().toLowerCase().equals("admin") && txtPassword.getText().equals("Admin"))
+        for (Student student : model.getAllStudents())
+        {
+            
+            if(student.getStudent(txtUser.getText(), txtPassword.getText()))
             {
-                System.out.println("admin logged in");
+                System.out.println(student.getFirstName() + " " + student.getLastName() + " has logged in");
             }
-        
+        }
+        for (Teacher teacher : model.getAllTeachers())
+        {
+            if(teacher.getTeacher(txtUser.getText(), txtPassword.getText()))
+            {
+                System.out.println(teacher.getFirstName() + " " + teacher.getLastName() + " has logged in");
+            }
+        }
     }
 
     @FXML
     private void handleCancel(ActionEvent event)
     {
+        Stage stage = (Stage) txtUser.getScene().getWindow();
+        stage.close();
     }
     
 }
