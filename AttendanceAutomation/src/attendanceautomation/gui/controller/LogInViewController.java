@@ -7,11 +7,15 @@ package attendanceautomation.gui.controller;
 
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -46,6 +50,7 @@ public class LogInViewController implements Initializable {
             if(student.getStudent(txtUser.getText(), txtPassword.getText()))
             {
                 System.out.println(student.getFirstName() + " " + student.getLastName() + " has logged in");
+                showStudentLogIn(student);
             }
         }
         for (Teacher teacher : model.getAllTeachers())
@@ -53,10 +58,50 @@ public class LogInViewController implements Initializable {
             if(teacher.getTeacher(txtUser.getText(), txtPassword.getText()))
             {
                 System.out.println(teacher.getFirstName() + " " + teacher.getLastName() + " has logged in");
+                showTeacherLogIn(teacher);
             }
         }
     }
+    private void showStudentLogIn(Student student)
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/attendanceautomation/gui/view/StudentView.fxml"));
+        try {
+            loader.load();
+        } catch (IOException ex) {
+            System.out.println("Error" + ex);
+        }
+        StudentViewController display = loader.getController();
 
+        Parent p = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(p));
+        Stage stage1 = (Stage) txtUser.getScene().getWindow();
+        stage1.close();
+        stage.showAndWait();
+        
+        
+    }
+    
+    private void showTeacherLogIn(Teacher teacher)
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/attendanceautomation/gui/view/FXMLTeacherView.fxml"));
+        try {
+            loader.load();
+        } catch (IOException ex) {
+            System.out.println("Error" + ex);
+        }
+        FXMLTeacherViewController display = loader.getController();
+
+        Parent p = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(p));
+        Stage stage1 = (Stage) txtUser.getScene().getWindow();
+        stage1.close();
+        stage.showAndWait();
+        
+    }
     @FXML
     private void handleCancel(ActionEvent event)
     {
