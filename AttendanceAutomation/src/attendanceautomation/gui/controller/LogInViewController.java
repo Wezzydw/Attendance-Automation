@@ -72,7 +72,8 @@ public class LogInViewController implements Initializable {
             System.out.println("Error" + ex);
         }
         StudentViewController display = loader.getController();
-
+        display.setStudent(student);
+        
         Parent p = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(p));

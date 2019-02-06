@@ -5,6 +5,7 @@
  */
 package attendanceautomation.gui.controller;
 
+import attendanceautomation.be.Student;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -27,11 +28,11 @@ public class StudentViewController implements Initializable {
     @FXML
     private ComboBox<?> cBox;
     @FXML
-    private TableView<?> tView;
+    private TableView<Student> tView;
     @FXML
-    private TableColumn<?, ?> tViewColOne;
+    private TableColumn<Student, String> tViewColOne;
     @FXML
-    private TableColumn<?, ?> tViewColTwo;
+    private TableColumn<Student, String> tViewColTwo;
     @FXML
     private RadioButton radioPresent;
     @FXML
@@ -41,16 +42,53 @@ public class StudentViewController implements Initializable {
     @FXML
     private AnchorPane middleAnchor;
 
+    private Student student;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
 
     @FXML
     private void handleRegister(ActionEvent event) {
+        
     }
     
+    public void setStudent(Student student)
+    {
+        this.student = student;
+        lblUserName.setText(student.getFirstName() + " " + student.getLastName());
+    }
+
+    @FXML
+    private void rPresent(ActionEvent event)
+    {
+        if (radioAbsent.selectedProperty().getValue())
+        {
+            radioAbsent.selectedProperty().setValue(Boolean.FALSE);
+            radioPresent.selectedProperty().setValue(Boolean.TRUE);
+        }
+        else if (!radioPresent.selectedProperty().getValue())
+        {
+            radioPresent.selectedProperty().setValue(Boolean.TRUE);
+        }
+        
+    }
+
+    @FXML
+    private void rAbsent(ActionEvent event)
+    {
+        if (radioPresent.selectedProperty().getValue())
+        {
+            radioPresent.selectedProperty().setValue(Boolean.FALSE);
+            radioAbsent.selectedProperty().setValue(Boolean.TRUE);
+        }
+        else if (!radioAbsent.selectedProperty().getValue())
+        {
+            radioAbsent.selectedProperty().setValue(Boolean.TRUE);
+        }
+    }
 }
