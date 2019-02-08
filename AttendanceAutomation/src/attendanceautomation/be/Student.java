@@ -18,20 +18,20 @@ import javafx.beans.property.StringProperty;
  */
 public class Student {
     
-    private StringProperty firstName = new SimpleStringProperty();
-    private StringProperty lastName = new SimpleStringProperty();
-    private StringProperty username = new SimpleStringProperty();
-    private StringProperty password = new SimpleStringProperty();
+    private StringProperty firstName;
+    private StringProperty lastName;
+    private StringProperty username;
+    private StringProperty password;
     private List<LocalDate> attendanceList;
     
     
     public Student(String firstName, String lastName, String username, String password)
     {
         attendanceList = new ArrayList();
-        this.firstName.set(firstName);
-        this.lastName.set(lastName);
-        this.username.set(username);
-        this.password.set(password);
+        this.firstName = new SimpleStringProperty(firstName);
+        this.lastName = new SimpleStringProperty(lastName);
+        this.username = new SimpleStringProperty(username);
+        this.password = new SimpleStringProperty(password);
     }
     
     public String getFirstName()
@@ -65,5 +65,15 @@ public class Student {
     public void deleteAttendanceDate(LocalDate date)
     {
         attendanceList.remove(date);
+    }
+    
+    public StringProperty firstNameProperty()
+    {
+        return firstName;
+    }
+    
+    public StringProperty lastNameProperty()
+    {
+        return lastName;
     }
 }

@@ -20,7 +20,7 @@
                   <TableView fx:id="tView" layoutX="-25.0" layoutY="92.0" prefHeight="373.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                     <columns>
                       <TableColumn fx:id="tViewColOne" prefWidth="75.0" text="Course" />
-                      <TableColumn fx:id="tViewColTwo" prefWidth="75.0" text="Attendance" />
+                      <TableColumn fx:id="tViewColTwo" prefWidth="75.0" text="Absense" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -37,8 +37,9 @@
                       <Button mnemonicParsing="false" onAction="#handleRegister" text="Register" />
                     </buttons>
                   </ButtonBar>
-                  <Label fx:id="lblUserName" layoutX="362.0" layoutY="14.0" text="User Name" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="5.0" />
+                  <Label fx:id="lblUserName" layoutX="362.0" layoutY="14.0" text="User Name" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="7.0" />
                   <AnchorPane fx:id="middleAnchor" layoutX="50.0" layoutY="59.0" prefHeight="281.0" prefWidth="335.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
+                  <Button layoutX="286.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleLogOut" text="Log out" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                </children>
             </AnchorPane>
         </items>

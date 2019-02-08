@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**
@@ -38,11 +39,16 @@ public class LogInViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        model = new Model(); // giver en error i teacher classen
+        model = new Model();
     }    
 
     @FXML
     private void handleLogIn(ActionEvent event)
+    {
+        checkUser();
+    }
+    
+    private void checkUser()
     {
         for (Student student : model.getAllStudents())
         {
@@ -62,6 +68,7 @@ public class LogInViewController implements Initializable {
             }
         }
     }
+    
     private void showStudentLogIn(Student student)
     {
         FXMLLoader loader = new FXMLLoader();
@@ -80,8 +87,6 @@ public class LogInViewController implements Initializable {
         Stage stage1 = (Stage) txtUser.getScene().getWindow();
         stage1.close();
         stage.showAndWait();
-        
-        
     }
     
     private void showTeacherLogIn(Teacher teacher)
@@ -108,6 +113,15 @@ public class LogInViewController implements Initializable {
     {
         Stage stage = (Stage) txtUser.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void handleEnterPressed(KeyEvent event)
+    {
+        if(event.getCode().toString().equals("ENTER"))
+        {
+            checkUser();
+        }
     }
     
 }
