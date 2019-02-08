@@ -76,4 +76,9 @@ public class Student {
     {
         return lastName;
     }
+    
+    public String dayFromDate(LocalDate date)
+    {
+        return date.getDayOfWeek().toString();
+    }
 }
