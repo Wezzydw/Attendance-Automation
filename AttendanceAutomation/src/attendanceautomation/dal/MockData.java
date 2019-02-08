@@ -95,6 +95,8 @@ public class MockData {
         Anne.addAttendanceDate(LocalDate.of(2019, 2, 27));
         Anne.addAttendanceDate(LocalDate.of(2019, 2, 28));
         students.add(Anne);
+        System.out.println(students.get(0).getAttendanceDates().get(0).getDayOfWeek().toString());
+        
 
         Student Mads = new Student("Mads", "Larsen", "madsen666", "123");
         Mads.addAttendanceDate(LocalDate.of(2019, 1, 29));
