@@ -11,6 +11,8 @@ import java.util.List;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -22,16 +24,18 @@ public class Student {
     private StringProperty lastName;
     private StringProperty username;
     private StringProperty password;
-    private List<LocalDate> attendanceList;
+    private StringProperty date;
+    private ObservableList<LocalDate> attendanceList;
     
     
     public Student(String firstName, String lastName, String username, String password)
     {
-        attendanceList = new ArrayList();
+        attendanceList = FXCollections.observableArrayList();
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.username = new SimpleStringProperty(username);
         this.password = new SimpleStringProperty(password);
+        date = new SimpleStringProperty();
     }
     
     public String getFirstName()
@@ -52,7 +56,7 @@ public class Student {
             return false;
     }
     
-    public List<LocalDate> getAttendanceDates()
+    public ObservableList<LocalDate> getAttendanceDates()
     {
         return attendanceList;
     }
@@ -73,6 +77,11 @@ public class Student {
     }
     
     public StringProperty lastNameProperty()
+    {
+        return lastName;
+    }
+    
+    public StringProperty dateProperty()
     {
         return lastName;
     }

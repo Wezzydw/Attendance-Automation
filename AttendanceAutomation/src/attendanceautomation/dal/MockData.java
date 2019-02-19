@@ -8,9 +8,10 @@ package attendanceautomation.dal;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -18,14 +19,14 @@ import java.util.List;
  */
 public class MockData {
 
-    private List<Student> students;
+    private ObservableList<Student> students;
     private List<Teacher> teachers;
 
     public MockData() {
         
         
         teachers = new ArrayList();
-        students = new ArrayList();
+        students = FXCollections.observableArrayList();
         
         teachers.add(new Teacher("Jeppe", "M", "JM", "123"));
 
@@ -290,13 +291,23 @@ public class MockData {
 
     }
 
-    public List<Student> getAllStudents() {
+    public ObservableList<Student> getAllStudents() {
         return students;
     }
     
     public List<Teacher> getAllTeachers()
     {
         return teachers;
+    }
+    
+    public Student getStudent(String name)
+    {
+        for (Student s : getAllStudents())
+        {
+            if (s.getFirstName().contains(name))
+                return s;
+        }
+        return null;
     }
 
 }

@@ -6,8 +6,10 @@
 package attendanceautomation.gui.controller;
 
 import attendanceautomation.be.Student;
+import attendanceautomation.dal.MockData;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +26,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -38,7 +39,7 @@ public class StudentViewController implements Initializable {
     @FXML
     private ComboBox<String> cBox;
     @FXML
-    private TableView<?> tView;
+    private TableView<Student> tView;
     @FXML
     private TableColumn<Student, String> tViewColOne;
     @FXML
@@ -62,6 +63,7 @@ public class StudentViewController implements Initializable {
         // TODO
 //        cBox.setItems(days, courses);
         handleShowLineChart();
+        showTable();
     }    
     
 
@@ -162,6 +164,15 @@ public class StudentViewController implements Initializable {
     }
     private void showChartInMiddle()
     {
+        
+    }
+    
+    private void showTable()
+    {
+        MockData m = new MockData();
+        tViewColOne.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
+        tViewColTwo.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+        tView.setItems(m.getAllStudents());
         
     }
 }
