@@ -173,6 +173,9 @@ public class StudentViewController implements Initializable {
         tViewColOne.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         tViewColTwo.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
         tView.setItems(m.getAllStudents());
+        //Hvis det her skal bruges skal vi have lavet klasse "absense" som holder styr på alle datoer i stedet
+        //Denne type kan kun tage en "property" fra hver i LISTEn af personer.
+        //Når vi arbejder med typen "student" må vi kun smide en liste af "Students" ind, ikke andet som setItems.
         
     }
 }
