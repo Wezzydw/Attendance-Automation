@@ -5,11 +5,11 @@
  */
 package attendanceautomation.gui.controller;
 
+import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.dal.MockData;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,11 +39,11 @@ public class StudentViewController implements Initializable {
     @FXML
     private ComboBox<String> cBox;
     @FXML
-    private TableView<Student> tView;
+    private TableView<Attendance> tView;
     @FXML
-    private TableColumn<Student, String> tViewColOne;
+    private TableColumn<Attendance, String> tViewColOne;
     @FXML
-    private TableColumn<Student, String> tViewColTwo;
+    private TableColumn<Attendance, String> tViewColTwo;
     @FXML
     private RadioButton radioPresent;
     @FXML
@@ -172,7 +172,7 @@ public class StudentViewController implements Initializable {
         MockData m = new MockData();
         tViewColOne.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         tViewColTwo.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
-        tView.setItems(m.getAllStudents());
+        tView.setItems(m.getStudent("Anne").getAttendanceDates1());
         //Hvis det her skal bruges skal vi have lavet klasse "absense" som holder styr på alle datoer i stedet
         //Denne type kan kun tage en "property" fra hver i LISTEn af personer.
         //Når vi arbejder med typen "student" må vi kun smide en liste af "Students" ind, ikke andet som setItems.

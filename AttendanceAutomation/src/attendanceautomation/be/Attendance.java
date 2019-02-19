@@ -18,7 +18,7 @@ import javafx.collections.ObservableList;
  *
  * @author Wezzy Laptop
  */
-public class Student {
+public class Attendance {
     
     private StringProperty firstName;
     private StringProperty lastName;
@@ -26,18 +26,13 @@ public class Student {
     private StringProperty password;
     private StringProperty date;
     private ObservableList<LocalDate> attendanceList;
-    private ObservableList<Attendance> attendanceList1;
     
     
-    public Student(String firstName, String lastName, String username, String password)
+    public Attendance(String firstName, String lastName)
     {
-        
         attendanceList = FXCollections.observableArrayList();
-        attendanceList1 = FXCollections.observableArrayList();
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
-        this.username = new SimpleStringProperty(username);
-        this.password = new SimpleStringProperty(password);
         date = new SimpleStringProperty();
     }
     
@@ -66,7 +61,7 @@ public class Student {
     
     public void addAttendanceDate(LocalDate date)
     {
-        attendanceList1.add(new Attendance(date.toString(), "Absent"));
+        attendanceList.add(date);
     }
     
     public void deleteAttendanceDate(LocalDate date)
@@ -92,10 +87,5 @@ public class Student {
     public String dayFromDate(LocalDate date)
     {
         return date.getDayOfWeek().toString();
-    }
-    
-    public ObservableList<Attendance> getAttendanceDates1()
-    {
-        return attendanceList1;
     }
 }
