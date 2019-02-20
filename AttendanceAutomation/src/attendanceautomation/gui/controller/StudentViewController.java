@@ -148,7 +148,7 @@ public class StudentViewController implements Initializable {
         lineChart.setTitle("Attendance");
         XYChart.Series series = new XYChart.Series();
         series.setName("Student name");
-        series.getData().add(new XYChart.Data<>("Mandag", 69));
+        series.getData().add(new XYChart.Data<>("Mandag", 69.123));
         series.getData().add(new XYChart.Data<>("Tirsdag", 12));
         series.getData().add(new XYChart.Data<>("Onsdag", 19));
         series.getData().add(new XYChart.Data<>("Torsdag", 23));

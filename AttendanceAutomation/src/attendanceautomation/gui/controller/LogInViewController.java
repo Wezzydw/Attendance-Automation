@@ -100,6 +100,7 @@ public class LogInViewController implements Initializable {
         }
         FXMLTeacherViewController display = loader.getController();
         display.setAttendanceTable(model.getAllStudents());
+        display.setTeacher(teacher);
 
         Parent p = loader.getRoot();
         Stage stage = new Stage();
