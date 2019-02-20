@@ -6,13 +6,8 @@
 package attendanceautomation.be;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 /**
  *
@@ -20,68 +15,40 @@ import javafx.collections.ObservableList;
  */
 public class Attendance {
     
-    private StringProperty firstName;
-    private StringProperty lastName;
-    private StringProperty username;
-    private StringProperty password;
     private StringProperty date;
-    private ObservableList<LocalDate> attendanceList;
-    
-    
-    public Attendance(String firstName, String lastName)
+    private StringProperty absense;
+    private LocalDate ldate;
+
+    public Attendance(LocalDate date, String absense)
     {
-        attendanceList = FXCollections.observableArrayList();
-        this.firstName = new SimpleStringProperty(firstName);
-        this.lastName = new SimpleStringProperty(lastName);
-        date = new SimpleStringProperty();
+        ldate = date;
+        this.date = new SimpleStringProperty(ldate.toString());
+        this.absense = new SimpleStringProperty(absense);
     }
     
-    public String getFirstName()
+    public String getDate()
     {
-        return firstName.get();
+        return date.get();
     }
     
-    public String getLastName()
+    public LocalDate getDateAsDate()
     {
-        return lastName.get();
+        return ldate;
     }
     
-    public boolean getStudent(String username, String password)
-    {   
-        if (username.equals(this.username.getValue()) && password.equals(this.password.getValue()))
-            return true;
-        else 
-            return false;
-    }
-    
-    public ObservableList<LocalDate> getAttendanceDates()
+    public String getAbsense()
     {
-        return attendanceList;
-    }
-    
-    public void addAttendanceDate(LocalDate date)
-    {
-        attendanceList.add(date);
-    }
-    
-    public void deleteAttendanceDate(LocalDate date)
-    {
-        attendanceList.remove(date);
+        return absense.get();
     }
     
     public StringProperty firstNameProperty()
     {
-        return firstName;
+        return date;
     }
     
     public StringProperty lastNameProperty()
     {
-        return lastName;
-    }
-    
-    public StringProperty dateProperty()
-    {
-        return lastName;
+        return absense;
     }
     
     public String dayFromDate(LocalDate date)

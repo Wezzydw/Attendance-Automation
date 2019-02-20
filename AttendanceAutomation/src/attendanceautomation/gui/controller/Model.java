@@ -5,6 +5,7 @@
  */
 package attendanceautomation.gui.controller;
 
+import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
 import bll.PassThroughLayer;
@@ -31,6 +32,52 @@ public class Model
     public List<Teacher> getAllTeachers()
     {
         return ptl.getAllTeachers();
+    }
+    
+    public double getPercentDaysForStudent(Student student, String day)
+    {
+        double count1 = 0;
+        double count2 = 0;
+        
+        for (Attendance a : student.getAttendanceDates1())
+        {
+            if (a.getDateAsDate().getDayOfWeek().toString().equals(day))
+            {
+                count1++;
+                if (a.getAbsense().equals("Present"))
+                {
+                    count2++;
+                }
+            }
+        }
+        double att = (count2/count1)*100;
+        
+        return att;
+    }
+    
+     public double getPercentDaysForAllStudents(String day)
+    {
+        double count1 = 0;
+        double count2 = 0;
+        
+        for (Student a : getAllStudents())
+        {
+            for (Attendance b : a.getAttendanceDates1())
+            {
+                
+            if (b.getDateAsDate().getDayOfWeek().toString().equals(day))
+            {
+                count1++;
+                if (b.getAbsense().equals("Present"))
+                {
+                    count2++;
+                }
+            }
+        }
+        }
+        double att = (count2/count1)*100;
+        
+        return att;
     }
     
 }

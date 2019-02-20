@@ -41,7 +41,7 @@ public class Student {
         this.password = new SimpleStringProperty(password);
         date = new SimpleStringProperty();
         this.fullName = new SimpleStringProperty(firstName + " " + lastName);
-        this.attendancePersentage = new SimpleDoubleProperty(Math.random()*100);
+        //this.attendancePersentage = new SimpleDoubleProperty(Math.random()*100);
     }
     
     public String getFirstName()
@@ -67,9 +67,9 @@ public class Student {
         return attendanceList;
     }
     
-    public void addAttendanceDate(LocalDate date)
+    public void addAttendanceDate(LocalDate date, String presence)
     {
-        attendanceList1.add(new Attendance(date.toString(), "Absent"));
+        attendanceList1.add(new Attendance(date, presence));
     }
     
     public void deleteAttendanceDate(LocalDate date)
@@ -109,6 +109,16 @@ public class Student {
     
     public DoubleProperty attendancePersentageProperty()
     {
-        return attendancePersentage;
+        double count = 0;
+        for (Attendance a : attendanceList1)
+        {
+            if(a.getAbsense().equals("Present"))
+                count++;
+        }
+        
+        if (count == 0)
+            return new SimpleDoubleProperty(0);
+        
+        return new SimpleDoubleProperty((count/attendanceList1.size())*100);
     }
 }

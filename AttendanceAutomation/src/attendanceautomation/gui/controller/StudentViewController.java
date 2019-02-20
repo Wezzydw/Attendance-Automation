@@ -63,7 +63,7 @@ public class StudentViewController implements Initializable {
         // TODO
 //        cBox.setItems(days, courses);
         handleShowLineChart();
-        showTable();
+        //showTable();
     }    
     
 
@@ -83,6 +83,7 @@ public class StudentViewController implements Initializable {
     {
         this.student = student;
         lblUserName.setText(student.getFirstName() + " " + student.getLastName());
+        showTable();
     }
 
     @FXML
@@ -169,10 +170,9 @@ public class StudentViewController implements Initializable {
     
     private void showTable()
     {
-        MockData m = new MockData();
         tViewColOne.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         tViewColTwo.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
-        tView.setItems(m.getStudent("Anne").getAttendanceDates1());
+        tView.setItems(student.getAttendanceDates1());
         //Hvis det her skal bruges skal vi have lavet klasse "absense" som holder styr på alle datoer i stedet
         //Denne type kan kun tage en "property" fra hver i LISTEn af personer.
         //Når vi arbejder med typen "student" må vi kun smide en liste af "Students" ind, ikke andet som setItems.
