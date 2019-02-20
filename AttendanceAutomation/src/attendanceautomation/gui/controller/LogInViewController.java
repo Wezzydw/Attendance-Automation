@@ -99,6 +99,7 @@ public class LogInViewController implements Initializable {
             System.out.println("Error" + ex);
         }
         FXMLTeacherViewController display = loader.getController();
+        display.setAttendanceTable(model.getAllStudents());
 
         Parent p = loader.getRoot();
         Stage stage = new Stage();
