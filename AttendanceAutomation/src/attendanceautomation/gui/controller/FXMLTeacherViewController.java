@@ -61,6 +61,9 @@ public class FXMLTeacherViewController implements Initializable
         attendancePercentageColumn.setCellValueFactory(cellData -> cellData.getValue().attendancePersentageProperty());
         handleShowLineChart();
         
+        attendanceTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> handleShowStudentLineChart(newValue));
+        
         
     }    
 
@@ -120,11 +123,12 @@ public class FXMLTeacherViewController implements Initializable
         lineChart.setTitle("Attendance");
         XYChart.Series series = new XYChart.Series();
         series.setName(student.getFirstName() + " " + student.getLastName());
-        series.getData().add(new XYChart.Data<>("Mandag", student.attendancePersentageProperty()));//for monday student.attendancePersentageMondayProperty() eller noget i den stil
-        series.getData().add(new XYChart.Data<>("Tirsdag", student.attendancePersentageProperty()));//for tuesday
-        series.getData().add(new XYChart.Data<>("Onsdag", student.attendancePersentageProperty()));//for wednesday
-        series.getData().add(new XYChart.Data<>("Torsdag", student.attendancePersentageProperty()));//for thursday
-        series.getData().add(new XYChart.Data<>("Fredag", student.attendancePersentageProperty()));//for friday
+        //11 skal skiftes ud med et eller andet fra student.getMondayAttendance eller sådan noget
+        series.getData().add(new XYChart.Data<>("Mandag", 11));//for monday student.attendancePersentageMondayProperty() eller noget i den stil
+        series.getData().add(new XYChart.Data<>("Tirsdag", 11));//for tuesday
+        series.getData().add(new XYChart.Data<>("Onsdag", 11));//for wednesday
+        series.getData().add(new XYChart.Data<>("Torsdag", 11));//for thursday
+        series.getData().add(new XYChart.Data<>("Fredag", 11));//for friday
         
         lineChart.getData().add(series);
         
@@ -153,5 +157,9 @@ public class FXMLTeacherViewController implements Initializable
         }
 
         return lineChart;
+    }
+    private void handleShowStudentLineChart(Student student)
+    {
+        middlePane.setCenter(buildStudentLineChart(student));
     }
 }

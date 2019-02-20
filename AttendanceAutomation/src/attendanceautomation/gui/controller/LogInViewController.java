@@ -107,7 +107,7 @@ public class LogInViewController implements Initializable {
         stage.setScene(new Scene(p));
         Stage stage1 = (Stage) txtUser.getScene().getWindow();
         stage1.close();
-        stage.showAndWait();
+        stage.show();
         
     }
     @FXML
