@@ -8,6 +8,7 @@ package attendanceautomation.gui.controller;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -45,6 +46,7 @@ public class FXMLTeacherViewController implements Initializable
     
     private Teacher teacher;
     private ObservableList<Student> allStudents = FXCollections.observableArrayList();
+    private List<Student> allStudentssss = new ArrayList();
     @FXML
     private BorderPane middlePane;
 
@@ -54,13 +56,15 @@ public class FXMLTeacherViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        
         // TODO
 //        firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
 //        lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
         studentNameColumn.setCellValueFactory(cellData -> cellData.getValue().fullNameProperty());
         attendancePercentageColumn.setCellValueFactory(cellData -> cellData.getValue().attendancePersentageProperty());
-        handleShowLineChart();
-        
+//        handleShowLineChart();
+//        handleShowAllStudentLineChart(allStudentssss);
+//        
         attendanceTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> handleShowStudentLineChart(newValue));
         
@@ -79,8 +83,10 @@ public class FXMLTeacherViewController implements Initializable
             allStudents.add(allStudent);
         }
         
+//        allStudentssss.addAll(alleStudenter);
         
         attendanceTable.setItems(allStudents);
+        handleShowAllStudentLineChart(alleStudenter);
     }
     public void setTeacher(Teacher teacher)
     {
@@ -124,11 +130,11 @@ public class FXMLTeacherViewController implements Initializable
         XYChart.Series series = new XYChart.Series();
         series.setName(student.getFirstName() + " " + student.getLastName());
         //11 skal skiftes ud med et eller andet fra student.getMondayAttendance eller sådan noget
-        series.getData().add(new XYChart.Data<>("Mandag", 11));//for monday student.attendancePersentageMondayProperty() eller noget i den stil
-        series.getData().add(new XYChart.Data<>("Tirsdag", 11));//for tuesday
-        series.getData().add(new XYChart.Data<>("Onsdag", 11));//for wednesday
-        series.getData().add(new XYChart.Data<>("Torsdag", 11));//for thursday
-        series.getData().add(new XYChart.Data<>("Fredag", 11));//for friday
+        series.getData().add(new XYChart.Data<>("Mandag", Math.random()*100));//for monday student.attendancePersentageMondayProperty() eller noget i den stil
+        series.getData().add(new XYChart.Data<>("Tirsdag", Math.random()*100));//for tuesday
+        series.getData().add(new XYChart.Data<>("Onsdag", Math.random()*100));//for wednesday
+        series.getData().add(new XYChart.Data<>("Torsdag", Math.random()*100));//for thursday
+        series.getData().add(new XYChart.Data<>("Fredag", Math.random()*100));//for friday
         
         lineChart.getData().add(series);
         
@@ -138,28 +144,36 @@ public class FXMLTeacherViewController implements Initializable
     //Denne skal visses inden man har trykket på en elev, efter det skulle den skifte over til functionen oven over
     private LineChart buildAllStudentLineChart(List<Student> allStudents)
     {
+        
+        System.out.println(allStudentssss.size());
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Week day");
         yAxis.setLabel("Absense %");
         LineChart<String, Number> lineChart = new LineChart<String, Number>(xAxis, yAxis);
         lineChart.setTitle("Attendance");
+        
         for (Student allStudent : allStudents) {
             XYChart.Series series = new XYChart.Series();
             series.setName(allStudent.getFirstName() + " " + allStudent.getLastName());
-            series.getData().add(new XYChart.Data<>("Mandag", allStudent.attendancePersentageProperty()));//for monday student.attendancePersentageMondayProperty() eller noget i den stil
-            series.getData().add(new XYChart.Data<>("Tirsdag", allStudent.attendancePersentageProperty()));//for tuesday
-            series.getData().add(new XYChart.Data<>("Onsdag", allStudent.attendancePersentageProperty()));//for wednesday
-            series.getData().add(new XYChart.Data<>("Torsdag", allStudent.attendancePersentageProperty()));//for thursday
-            series.getData().add(new XYChart.Data<>("Fredag", allStudent.attendancePersentageProperty()));//for friday
+            series.getData().add(new XYChart.Data<>("Mandag", Math.random()*100));//for monday student.attendancePersentageMondayProperty() eller noget i den stil
+            series.getData().add(new XYChart.Data<>("Tirsdag", Math.random()*100));//for tuesday
+            series.getData().add(new XYChart.Data<>("Onsdag", Math.random()*100));//for wednesday
+            series.getData().add(new XYChart.Data<>("Torsdag", Math.random()*100));//for thursday
+            series.getData().add(new XYChart.Data<>("Fredag", Math.random()*100));//for friday
 
             lineChart.getData().add(series);
         }
+
 
         return lineChart;
     }
     private void handleShowStudentLineChart(Student student)
     {
         middlePane.setCenter(buildStudentLineChart(student));
+    }
+    private void handleShowAllStudentLineChart(List<Student> allStudents)
+    {
+        middlePane.setCenter(buildAllStudentLineChart(allStudents));
     }
 }
