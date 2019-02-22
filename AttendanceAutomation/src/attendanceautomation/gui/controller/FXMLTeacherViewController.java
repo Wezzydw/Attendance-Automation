@@ -7,6 +7,7 @@ package attendanceautomation.gui.controller;
 
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -24,6 +28,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -58,13 +63,9 @@ public class FXMLTeacherViewController implements Initializable
     {
 
         // TODO
-//        firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
-//        lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
         studentNameColumn.setCellValueFactory(cellData -> cellData.getValue().fullNameProperty());
         attendancePercentageColumn.setCellValueFactory(cellData -> cellData.getValue().attendancePersentageProperty());
-//        handleShowLineChart();
-//        handleShowAllStudentLineChart(allStudentssss);
-//        
+        
         attendanceTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> handleShowStudentLineChart(newValue));
 
@@ -74,6 +75,20 @@ public class FXMLTeacherViewController implements Initializable
     @FXML
     private void HandleEdit(ActionEvent event)
     {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/attendanceautomation/gui/view/TeacherEdit.fxml"));
+        try {
+            loader.load();
+        } catch (IOException ex) {
+            System.out.println("Error" + ex);
+        }
+        TeacherEditController display = loader.getController();
+//        display.setStudent(attendancePercentageColumn.getTableView().getItems().);
+
+        Parent p = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(p));
+        stage.show();
     }
 
     public void setAttendanceTable(List<Student> alleStudenter)
@@ -95,38 +110,12 @@ public class FXMLTeacherViewController implements Initializable
         lblUser.setText(teacher.getFirstName() + " " + teacher.getLastName());
     }
 
-    private LineChart buildLineChart()
-    {
-        CategoryAxis xAxis = new CategoryAxis();
-        NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Week day");
-        yAxis.setLabel("Absense %");
-        LineChart<String, Number> lineChart = new LineChart<String, Number>(xAxis, yAxis);
-        lineChart.setTitle("Attendance");
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Student name");
-        series.getData().add(new XYChart.Data<>("Mandag", 69.123));
-        series.getData().add(new XYChart.Data<>("Tirsdag", 12));
-        series.getData().add(new XYChart.Data<>("Onsdag", 19));
-        series.getData().add(new XYChart.Data<>("Torsdag", 23));
-        series.getData().add(new XYChart.Data<>("Fredag", 92));
-
-        lineChart.getData().add(series);
-
-        return lineChart;
-    }
-
-    private void handleShowLineChart()
-    {
-        middlePane.setCenter(buildLineChart());
-    }
-
     private LineChart buildStudentLineChart(Student student)
     {
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Week day");
-        yAxis.setLabel("Absense %");
+        yAxis.setLabel("Attendance %");
         LineChart<String, Number> lineChart = new LineChart<String, Number>(xAxis, yAxis);
         lineChart.setTitle("Attendance");
         XYChart.Series series = new XYChart.Series();
@@ -147,14 +136,13 @@ public class FXMLTeacherViewController implements Initializable
     private LineChart buildAllStudentLineChart(List<Student> allStudents)
     {
 
-        System.out.println(allStudentssss.size());
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Week day");
-        yAxis.setLabel("Absense %");
+        yAxis.setLabel("Attendance %");
         LineChart<String, Number> lineChart = new LineChart<String, Number>(xAxis, yAxis);
         lineChart.setTitle("Attendance");
-
+// der er ike behov for 'forloop' da vi har getPercentDaysForAllStudents
         for (Student allStudent : allStudents)
         {
             XYChart.Series series = new XYChart.Series();
@@ -170,6 +158,8 @@ public class FXMLTeacherViewController implements Initializable
 
         return lineChart;
     }
+    
+
 
     private void handleShowStudentLineChart(Student student)
     {

@@ -55,6 +55,7 @@ public class StudentViewController implements Initializable {
     private LogInViewController logInView;
     @FXML
     private BorderPane middlePane;
+    private Model model;
     /**
      * Initializes the controller class.
      */
@@ -62,8 +63,10 @@ public class StudentViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 //        cBox.setItems(days, courses);
-        handleShowLineChart();
+        
         //showTable();
+        model = new Model();
+//        handleShowLineChart();
     }    
     
 
@@ -84,6 +87,7 @@ public class StudentViewController implements Initializable {
         this.student = student;
         lblUserName.setText(student.getFirstName() + " " + student.getLastName());
         showTable();
+        handleShowLineChart(student);
     }
 
     @FXML
@@ -139,7 +143,7 @@ public class StudentViewController implements Initializable {
         stage1.close();
         stage.show();
     }
-    private LineChart buildLineChart()//chart instead of void bar or line chart
+    private LineChart buildLineChart(Student student)//chart instead of void bar or line chart
     {
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
@@ -148,20 +152,20 @@ public class StudentViewController implements Initializable {
         LineChart<String, Number> lineChart = new LineChart<String, Number>(xAxis, yAxis);
         lineChart.setTitle("Attendance");
         XYChart.Series series = new XYChart.Series();
-        series.setName("Student name");
-        series.getData().add(new XYChart.Data<>("Mandag", 69.123));
-        series.getData().add(new XYChart.Data<>("Tirsdag", 12));
-        series.getData().add(new XYChart.Data<>("Onsdag", 19));
-        series.getData().add(new XYChart.Data<>("Torsdag", 23));
-        series.getData().add(new XYChart.Data<>("Fredag", 92));
+        series.setName(student.getFirstName() + " " + student.getLastName());
+        series.getData().add(new XYChart.Data<>("Mandag", model.getPercentDaysForStudent(student, "MONDAY")));
+        series.getData().add(new XYChart.Data<>("Tirsdag", model.getPercentDaysForStudent(student, "TUESDAY")));
+        series.getData().add(new XYChart.Data<>("Onsdag", model.getPercentDaysForStudent(student, "WEDNESDAY")));
+        series.getData().add(new XYChart.Data<>("Torsdag", model.getPercentDaysForStudent(student, "THURSDAY")));
+        series.getData().add(new XYChart.Data<>("Fredag", model.getPercentDaysForStudent(student, "FRIDAY")));
         
         lineChart.getData().add(series);
         
         return lineChart;
     }
-    private void handleShowLineChart()
+    private void handleShowLineChart(Student student)
     {
-        middlePane.setCenter(buildLineChart());
+        middlePane.setCenter(buildLineChart(student));
     }
     private void showChartInMiddle()
     {
