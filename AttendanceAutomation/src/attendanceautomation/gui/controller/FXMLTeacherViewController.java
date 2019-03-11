@@ -7,6 +7,7 @@ package attendanceautomation.gui.controller;
 
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
+import attendanceautomation.gui.view.TeacherEditController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
