@@ -14,7 +14,7 @@ import javafx.collections.ObservableList;
  *
  * @author andreas
  */
-public interface IDAL
+public interface IGetData
 {
     
     ObservableList<Student> getAllStudents();
