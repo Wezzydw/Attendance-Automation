@@ -8,7 +8,7 @@ package attendanceautomation.gui.controller;
 import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
-import bll.PassThroughLayer;
+import attendanceautomation.bll.PassThroughLayer;
 import java.util.List;
 
 /**
