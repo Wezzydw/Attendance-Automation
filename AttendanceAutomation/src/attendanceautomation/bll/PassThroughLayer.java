@@ -22,8 +22,10 @@ public class PassThroughLayer
 //    public PassThroughLayer(IGetData getData)
     public PassThroughLayer()
     {
-        data = new MockData();
+        //data = new MockData();
 //        data = getData;
+        
+        
     }
     
     

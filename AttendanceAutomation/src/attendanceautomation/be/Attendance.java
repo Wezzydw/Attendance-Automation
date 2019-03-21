@@ -8,6 +8,7 @@ package attendanceautomation.be;
 import java.time.LocalDate;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.util.converter.LocalDateStringConverter;
 
 /**
  *
@@ -19,8 +20,10 @@ public class Attendance {
     private StringProperty absense;
     private LocalDate ldate;
 
+    
+    
     public Attendance(LocalDate date, String absense)
-    {
+    {        
         ldate = date;
         this.date = new SimpleStringProperty(ldate.toString());
         this.absense = new SimpleStringProperty(absense);
