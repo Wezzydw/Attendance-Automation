@@ -47,7 +47,7 @@ public class StudentDAO
                 String password = rs.getString("password");
                 int id = rs.getInt("id");
                 
-                Student student = new Student(fName, lName, username, password);
+                Student student = new Student(id, fName, lName, username, password);
                 
                 allStudents.add(student);
                 

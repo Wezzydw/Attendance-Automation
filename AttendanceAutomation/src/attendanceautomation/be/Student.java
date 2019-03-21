@@ -47,7 +47,10 @@ public class Student {
         this.id = new SimpleIntegerProperty(id);
         //this.attendancePersentage = new SimpleDoubleProperty(Math.random()*100);
     }
-    
+    public int getId()
+    {
+        return id.get();
+    }
     public String getFirstName()
     {
         return firstName.get();

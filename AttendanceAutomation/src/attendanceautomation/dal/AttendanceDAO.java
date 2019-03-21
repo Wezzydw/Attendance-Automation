@@ -5,6 +5,16 @@
  */
 package attendanceautomation.dal;
 
+import attendanceautomation.be.Attendance;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author andreas
@@ -32,19 +42,19 @@ public class AttendanceDAO
 
             while (rs.next()) {
                 String date = rs.getString("date");
-                String studentID = rs.getString("lName");
-                String username = rs.getString("username");
-                String password = rs.getString("password");
-                int id = rs.getInt("id");
+                int studentID = rs.getInt("studentId");
+                String present = rs.getString("present");
+                LocalDate l = LocalDate.parse(date);
                 
-                Student student = new Student(fName, lName, username, password);
+                Attendance attendance = new Attendance(l, present);
+                // der mangler noget med student id, dette mangler i BE laget
                 
-                allStudents.add(student);
+                allAttendances.add(attendance);
                 
             }
         } catch (SQLException ex) {
-            throw new SQLException("No data from getAllMovies" + ex);
+            throw new SQLException("No data from getAllAttendances" + ex);
         }
-        return allStudents;
+        return allAttendances;
     }
 }
