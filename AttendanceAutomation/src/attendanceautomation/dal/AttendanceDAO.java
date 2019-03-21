@@ -46,10 +46,12 @@ public class AttendanceDAO
                 String present = rs.getString("present");
                 LocalDate l = LocalDate.parse(date);
                 
-                Attendance attendance = new Attendance(l, present);
+                //Attendance attendance = new Attendance(l, present);
                 // der mangler noget med student id, dette mangler i BE laget
                 
-                allAttendances.add(attendance);
+                //allAttendances.add(attendance);
+                
+                
                 
             }
         } catch (SQLException ex) {

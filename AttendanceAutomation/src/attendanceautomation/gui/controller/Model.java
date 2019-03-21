@@ -8,7 +8,9 @@ package attendanceautomation.gui.controller;
 import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
-import attendanceautomation.bll.PassThroughLayer;
+import attendanceautomation.bll.IBLL;
+import attendanceautomation.bll.PassThroughLayerDB;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -17,11 +19,11 @@ import java.util.List;
  */
 public class Model
 {
-    private PassThroughLayer ptl;
+    private IBLL ptl;
 
-    public Model()
+    public Model() throws IOException
     {
-        ptl = new PassThroughLayer();
+        ptl = new PassThroughLayerDB();
     }
     
     public List<Student> getAllStudents()

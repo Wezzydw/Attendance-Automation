@@ -15,47 +15,44 @@ import javafx.util.converter.LocalDateStringConverter;
  * @author Wezzy Laptop
  */
 public class Attendance {
-    
+
     private StringProperty date;
     private StringProperty absense;
     private LocalDate ldate;
+    private int id;
 
-    
-    
-    public Attendance(LocalDate date, String absense)
-    {        
+    public Attendance(int id, LocalDate date, String absense) {
+        this.id = id;
         ldate = date;
         this.date = new SimpleStringProperty(ldate.toString());
         this.absense = new SimpleStringProperty(absense);
     }
-    
-    public String getDate()
-    {
+
+    public String getDate() {
         return date.get();
     }
-    
-    public LocalDate getDateAsDate()
-    {
+
+    public LocalDate getDateAsDate() {
         return ldate;
     }
-    
-    public String getAbsense()
-    {
+
+    public String getAbsense() {
         return absense.get();
     }
-    
-    public StringProperty firstNameProperty()
-    {
+
+    public StringProperty firstNameProperty() {
         return date;
     }
-    
-    public StringProperty lastNameProperty()
-    {
+
+    public StringProperty lastNameProperty() {
         return absense;
     }
-    
-    public String dayFromDate(LocalDate date)
-    {
+
+    public String dayFromDate(LocalDate date) {
         return date.getDayOfWeek().toString();
+    }
+
+    public int getId() {
+        return id;
     }
 }

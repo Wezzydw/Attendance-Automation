@@ -11,6 +11,8 @@ import attendanceautomation.dal.MockData;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,12 +63,16 @@ public class StudentViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            // TODO
 //        cBox.setItems(days, courses);
-        
-        //showTable();
-        model = new Model();
+
+//showTable();
+model = new Model();
 //        handleShowLineChart();
+        } catch (IOException ex) {
+            Logger.getLogger(StudentViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
     
 

@@ -76,7 +76,7 @@ public class Student {
     
     public void addAttendanceDate(LocalDate date, String presence)
     {
-        attendanceList1.add(new Attendance(date, presence));
+        attendanceList1.add(new Attendance(id.get(), date, presence));
     }
     
     public void deleteAttendanceDate(LocalDate date)

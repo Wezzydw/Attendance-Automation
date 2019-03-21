@@ -5,11 +5,19 @@
  */
 package attendanceautomation.bll;
 
+import attendanceautomation.be.Student;
+import attendanceautomation.be.Teacher;
+import java.util.List;
+
 /**
  *
  * @author andreas
  */
 public interface IBLL
 {
+    public List<Student> getAllStudents();
+
     
+    public List<Teacher> getAllTeachers() ;
+
 }
