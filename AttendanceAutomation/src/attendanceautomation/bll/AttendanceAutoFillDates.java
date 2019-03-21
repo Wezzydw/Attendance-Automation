@@ -12,6 +12,8 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +25,13 @@ public class AttendanceAutoFillDates {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        AttendanceAutoFillDates bla = new AttendanceAutoFillDates();
         
+        try {
+            bla.insertDatesToDb();
+        } catch (SQLException ex) {
+            Logger.getLogger(AttendanceAutoFillDates.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void insertDatesToDb() throws SQLServerException, SQLException{
@@ -36,17 +44,15 @@ public class AttendanceAutoFillDates {
         try(Connection con = getConnection()){
         String sql = "INSERT INTO Attendance VALUES (?,?,?)";  
         PreparedStatement statement = con.prepareStatement(sql);
-            for (Student student : ptl.getAllStudents()) {
-                for (Attendance att : student.getAttendanceDates1()) {
-                    statement.setInt(1, student.getId);
+            for (int i = 1; i < 8; i++){
+                for (Attendance att : ptl.getAllStudents().get(i).getAttendanceDates1()) {
+                    statement.setInt(1, i);
+                    statement.setString(2, att.getDate());
+                    statement.setString(3, att.getAbsense());
                 }
-                
             }
-            
         }
-        catch(){
-                
-                }
+        
     }
     
     private static final String SERVER_NAME = "10.176.111.31";
