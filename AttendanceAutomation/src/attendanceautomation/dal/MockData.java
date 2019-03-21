@@ -32,14 +32,14 @@ public class MockData
 
         teachers.add(new Teacher("Jeppe", "M", "JM", "123"));
 
-        Student Tonny = new Student("Tonny", "Tonnesen", "tny123", "123");
+        Student Tonny = new Student(1,"Tonny", "Tonnesen", "tny123", "123");
 
 //        Tonny.addAttendanceDate(LocalDate.of(2019, 1, 29));
 //        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 3));
 //        Tonny.addAttendanceDate(LocalDate.of(2019, 2, 2));
         students.add(Tonny);
 
-        Student Anne = new Student("Anne", "Vestergaard", "Annepigen", "123");
+        Student Anne = new Student(2,"Anne", "Vestergaard", "Annepigen", "123");
 //        Anne.addAttendanceDate(LocalDate.of(2019, 1, 1));
 //        Anne.addAttendanceDate(LocalDate.of(2019, 1, 2));
 //        Anne.addAttendanceDate(LocalDate.of(2019, 1, 3));
@@ -101,7 +101,7 @@ public class MockData
 //        Anne.addAttendanceDate(LocalDate.of(2019, 2, 28));
         students.add(Anne);
 
-        Student Mads = new Student("Mads", "Larsen", "madsen666", "123");
+        Student Mads = new Student(3,"Mads", "Larsen", "madsen666", "123");
 //        Mads.addAttendanceDate(LocalDate.of(2019, 1, 29));
 //        Mads.addAttendanceDate(LocalDate.of(2019, 2, 3));
 //        Mads.addAttendanceDate(LocalDate.of(2019, 2, 5));
@@ -113,7 +113,7 @@ public class MockData
 //        Mads.addAttendanceDate(LocalDate.of(2019, 2, 15));
         students.add(Mads);
 
-        Student Peter = new Student("Peter", "Stegger", "ptrstr", "123");
+        Student Peter = new Student(4,"Peter", "Stegger", "ptrstr", "123");
 //        Peter.addAttendanceDate(LocalDate.of(2019, 1, 1));
 //        Peter.addAttendanceDate(LocalDate.of(2019, 1, 2));
 //        Peter.addAttendanceDate(LocalDate.of(2019, 1, 3));
@@ -145,7 +145,7 @@ public class MockData
 //        Peter.addAttendanceDate(LocalDate.of(2019, 2, 28));
         students.add(Peter);
 
-        Student Trine = new Student("Trine", "Andersen", "trnA", "123");
+        Student Trine = new Student(5,"Trine", "Andersen", "trnA", "123");
 //        Trine.addAttendanceDate(LocalDate.of(2019, 1, 1));
 //        Trine.addAttendanceDate(LocalDate.of(2019, 1, 2));
 //        Trine.addAttendanceDate(LocalDate.of(2019, 1, 5));
@@ -192,7 +192,7 @@ public class MockData
 //        Trine.addAttendanceDate(LocalDate.of(2019, 2, 28));
         students.add(Trine);
 
-        Student Jack = new Student("Jack", "Black", "jckbck", "123");
+        Student Jack = new Student(6,"Jack", "Black", "jckbck", "123");
 //        Jack.addAttendanceDate(LocalDate.of(2019, 1, 1));
 //        Jack.addAttendanceDate(LocalDate.of(2019, 1, 2));
 //        Jack.addAttendanceDate(LocalDate.of(2019, 1, 3));
@@ -253,7 +253,7 @@ public class MockData
 //        Jack.addAttendanceDate(LocalDate.of(2019, 2, 28));
         students.add(Jack);
 
-        Student Lise = new Student("Lise", "Meyrup", "LM", "123");
+        Student Lise = new Student(7,"Lise", "Meyrup", "LM", "123");
 //        Lise.addAttendanceDate(LocalDate.of(2019, 1, 1));
 //        Lise.addAttendanceDate(LocalDate.of(2019, 1, 2));
 //        Lise.addAttendanceDate(LocalDate.of(2019, 1, 3));
