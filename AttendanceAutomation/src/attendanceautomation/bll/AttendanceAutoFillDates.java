@@ -35,20 +35,19 @@ public class AttendanceAutoFillDates {
     }
     
     public void insertDatesToDb() throws SQLServerException, SQLException{
-        String date;
-        String attendance;
-        int id;
+        
         PassThroughLayer ptl = new PassThroughLayer();
         ptl.getAllStudents();
         
         try(Connection con = getConnection()){
         String sql = "INSERT INTO Attendance VALUES (?,?,?)";  
         PreparedStatement statement = con.prepareStatement(sql);
-            for (int i = 1; i < 8; i++){
+            for (int i = 0; i < 7; i++){
                 for (Attendance att : ptl.getAllStudents().get(i).getAttendanceDates1()) {
-                    statement.setInt(1, i);
+                    statement.setInt(1, i+1);
                     statement.setString(2, att.getDate());
                     statement.setString(3, att.getAbsense());
+                    statement.executeUpdate();
                 }
             }
         }
@@ -56,9 +55,9 @@ public class AttendanceAutoFillDates {
     }
     
     private static final String SERVER_NAME = "10.176.111.31";
-    private static final String DB_NAME = "moviesrs";
-    private static final String USER_NAME = "CS2018A_11";
-    private static final String PASSWORD = "CS2018A_11";
+    private static final String DB_NAME = "Attendance_Automation";
+    private static final String USER_NAME = "CS2018A_20";
+    private static final String PASSWORD = "CS2018A_20";
     SQLServerDataSource ds;
     
         
