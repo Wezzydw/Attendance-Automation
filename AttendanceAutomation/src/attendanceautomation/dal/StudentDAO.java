@@ -32,7 +32,7 @@ public class StudentDAO
         }
     }
     
-    public List<Student> getAllStudentFromDB() throws SQLException {
+    public List<Student> getAllStudentsFromDB() throws SQLException {
         List<Student> allStudents = new ArrayList();
 
         try (Connection con = conProvider.getConnection()) {
@@ -41,7 +41,6 @@ public class StudentDAO
             ResultSet rs = prst.executeQuery();
 
             while (rs.next()) {
-                List<String> categori = new ArrayList();
                 String fName = rs.getString("fName");
                 String lName = rs.getString("lName");
                 String username = rs.getString("username");
@@ -54,9 +53,8 @@ public class StudentDAO
                 
             }
         } catch (SQLException ex) {
-            throw new SQLException("No data from getAllMovies" + ex);
+            throw new SQLException("No data from getAllStudents" + ex);
         }
         return allStudents;
     }
-    
 }
