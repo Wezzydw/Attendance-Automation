@@ -7,7 +7,7 @@ package attendanceautomation.gui.controller;
 
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
-import attendanceautomation.gui.view.TeacherEditController;
+import attendanceautomation.gui.controller.TeacherEditController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -90,7 +90,7 @@ public class FXMLTeacherViewController implements Initializable
             System.out.println("Error" + ex);
         }
         TeacherEditController display = loader.getController();
-//        display.setStudent(attendancePercentageColumn.getTableView().getItems().);
+        display.setStudent(attendanceTable.getSelectionModel().getSelectedItem());
 
         Parent p = loader.getRoot();
         Stage stage = new Stage();

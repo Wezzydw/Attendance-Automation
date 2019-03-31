@@ -17,7 +17,7 @@ import javafx.collections.ObservableList;
 public interface IGetData
 {
     
-    ObservableList<Student> getAllStudents();
+    List<Student> getAllStudents();
     
     List<Teacher> getAllTeachers();
   

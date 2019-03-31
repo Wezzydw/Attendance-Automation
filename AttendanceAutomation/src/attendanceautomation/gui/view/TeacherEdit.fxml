@@ -7,8 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="attendanceautomation.gui.controller.TeacherEditController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendanceautomation.gui.controller.TeacherEditController">
    <children>
       <TableView fx:id="tableTable" layoutX="130.0" layoutY="42.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
         <columns>
@@ -21,8 +20,8 @@
       </TableView>
       <ButtonBar layoutY="360.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="360.0">
          <buttons>
-            <RadioButton fx:id="radioPresent" mnemonicParsing="false" text="Present" />
-            <RadioButton fx:id="radioAbsent" mnemonicParsing="false" text="Absent" />
+            <RadioButton fx:id="radioPresent" mnemonicParsing="false" onAction="#rPresent" text="Present" />
+            <RadioButton fx:id="radioAbsent" mnemonicParsing="false" onAction="#rAbsent" text="Absent" />
          </buttons>
       </ButtonBar>
       <Label fx:id="lblUser" layoutY="6.0" text="Label" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
