@@ -88,5 +88,35 @@ public class StudentDAO {
         }
         return ad;
     }
-
+    
+    public void editAttendance(Student student, List<Attendance> attendance) throws SQLException{
+        try (Connection con = conProvider.getConnection()) {
+            String a = "UPDATE Attendance SET present = ? WHERE (studentId = ? AND date = ?);";
+            PreparedStatement prst = con.prepareStatement(a);
+            
+            for (Attendance attendance1 : attendance)
+            {
+                prst.setString(1, attendance1.getAbsense());
+                prst.setInt(2, student.getId());
+                prst.setString(3, attendance1.getDate());
+                prst.execute();
+            }
+            prst.close();
+        } catch(SQLException ex){
+            throw new SQLException("Can't edit attendance " + ex);
+        }
+    }
+    
+    public void regiserAttendance(Student student, Attendance attendance){
+        try (Connection con = conProvider.getConnection()) {
+            String a = "INSERT INTO Attendance (studentId, date, present) VALUES(?,?,?);";
+            PreparedStatement prst = con.prepareStatement(a);
+            prst.setInt(1, student.getId());
+            prst.setString(2, attendance.getDate());
+            prst.setString(3, attendance.getAbsense());
+            prst.execute();
+        } catch(SQLException ex){
+            
+        }
+    }
 }

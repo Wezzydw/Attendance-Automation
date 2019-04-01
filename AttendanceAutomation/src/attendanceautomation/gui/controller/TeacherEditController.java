@@ -93,4 +93,9 @@ public class TeacherEditController implements Initializable {
         //Når vi arbejder med typen "student" må vi kun smide en liste af "Students" ind, ikke andet som setItems.
         
     }
+
+    @FXML
+    private void onHandleEdit(ActionEvent event)
+    {
+    }
 }
