@@ -49,8 +49,9 @@ public class TeacherEditController implements Initializable {
     
     public void setStudent(Student student){
         lblUser.setText(student.getFirstName() + " " + student.getLastName());
-        currentStudent = student;
-        student.getAttendanceDates1();
+        this.currentStudent = student;
+        showTable();
+//        student.getAttendanceDates1();
 //        student.
     }
     
