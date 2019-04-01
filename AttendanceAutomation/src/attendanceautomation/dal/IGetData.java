@@ -5,6 +5,7 @@
  */
 package attendanceautomation.dal;
 
+import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
 import java.util.List;
@@ -23,4 +24,7 @@ public interface IGetData
   
     Student getStudent(String name);
     
+    void registerAttendance(Attendance attendance, Student student);
+    
+    void editAttendance(List<Attendance> attendance, Student student);
 }

@@ -5,6 +5,7 @@
  */
 package attendanceautomation.bll;
 
+import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
 import attendanceautomation.dal.StudentDAO;
@@ -47,5 +48,23 @@ public class PassThroughLayerDB implements IBLL {
             Logger.getLogger(PassThroughLayerDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    @Override
+    public void registerAttendance(Attendance attendance, Student student)
+    {
+        studentdata.regiserAttendance(student, attendance);
+    }
+
+    @Override
+    public void editAttendance(List<Attendance> attendance, Student student)
+    {
+        try
+        {
+            studentdata.editAttendance(student, attendance);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(PassThroughLayerDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

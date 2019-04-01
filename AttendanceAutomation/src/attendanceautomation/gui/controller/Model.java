@@ -36,6 +36,10 @@ public class Model
         return ptl.getAllTeachers();
     }
     
+    public void registerAttendance(Attendance attendance, Student student){
+        ptl.registerAttendance(attendance, student);
+    }
+            
     public double getPercentDaysForStudent(Student student, String day)
     {
         double count1 = 0;

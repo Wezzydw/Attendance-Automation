@@ -5,10 +5,12 @@
  */
 package attendanceautomation.bll;
 
+import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
+import attendanceautomation.dal.GetData;
 import attendanceautomation.dal.IGetData;
-import attendanceautomation.dal.MockData;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -17,12 +19,12 @@ import java.util.List;
  */
 public class PassThroughLayer
 {
-    private MockData data;
+    private IGetData data;
 
 //    public PassThroughLayer(IGetData getData)
-    public PassThroughLayer()
+    public PassThroughLayer() throws IOException
     {
-        data = new MockData();
+        data = new GetData();
 //        data = getData;
         
         
@@ -38,5 +40,13 @@ public class PassThroughLayer
     public List<Teacher> getAllTeachers() 
     {
         return data.getAllTeachers();
+    }
+    
+    public void registerAttendance(Attendance attendance, Student student){
+        data.registerAttendance(attendance, student);
+    }
+    
+    public void editAttendance(List<Attendance> attendance, Student student){
+        data.editAttendance(attendance, student);
     }
 }

@@ -5,6 +5,7 @@
  */
 package attendanceautomation.dal;
 
+import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
 import java.io.IOException;
@@ -53,6 +54,24 @@ public class GetData implements IGetData{
     @Override
     public Student getStudent(String name) {
         return null;
+    }
+
+    @Override
+    public void registerAttendance(Attendance attendance, Student student)
+    {
+        sdao.regiserAttendance(student, attendance);
+    }
+
+    @Override
+    public void editAttendance(List<Attendance> attendance, Student student)
+    {
+        try
+        {
+            sdao.editAttendance(student, attendance);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package attendanceautomation.bll;
 
+import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
 import java.util.List;
@@ -17,7 +18,9 @@ public interface IBLL
 {
     public List<Student> getAllStudents();
 
-    
     public List<Teacher> getAllTeachers() ;
 
+    public void registerAttendance(Attendance attendance, Student student);
+    
+    public void editAttendance(List<Attendance> attendance, Student student);
 }

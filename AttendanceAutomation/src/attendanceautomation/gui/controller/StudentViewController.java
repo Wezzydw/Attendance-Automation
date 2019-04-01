@@ -10,6 +10,7 @@ import attendanceautomation.be.Student;
 import attendanceautomation.dal.MockData;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -80,10 +81,13 @@ model = new Model();
     private void handleRegister(ActionEvent event) {
         if (radioPresent.selectedProperty().getValue())
         {
+           Attendance temp = new Attendance(student.getId(), LocalDate.now(), "present");
+//           model.
             // add date to attendance list
         }
         else if (radioAbsent.selectedProperty().getValue())
         {
+            Attendance temp = new Attendance(student.getId(), LocalDate.now(), "absent");
             //remove date from attendance list
         }
     }

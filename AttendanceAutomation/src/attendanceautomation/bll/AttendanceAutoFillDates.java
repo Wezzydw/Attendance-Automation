@@ -9,6 +9,7 @@ import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -24,7 +25,7 @@ public class AttendanceAutoFillDates {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLServerException, IOException {
         AttendanceAutoFillDates bla = new AttendanceAutoFillDates();
         
         try {
@@ -34,7 +35,7 @@ public class AttendanceAutoFillDates {
         }
     }
     
-    public void insertDatesToDb() throws SQLServerException, SQLException{
+    public void insertDatesToDb() throws SQLServerException, SQLException, IOException{
         
         PassThroughLayer ptl = new PassThroughLayer();
         ptl.getAllStudents();
