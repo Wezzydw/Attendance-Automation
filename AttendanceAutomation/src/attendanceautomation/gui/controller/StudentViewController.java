@@ -82,12 +82,13 @@ model = new Model();
         if (radioPresent.selectedProperty().getValue())
         {
            Attendance temp = new Attendance(student.getId(), LocalDate.now(), "present");
-//           model.
+           model.registerAttendance(temp, student);
             // add date to attendance list
         }
         else if (radioAbsent.selectedProperty().getValue())
         {
             Attendance temp = new Attendance(student.getId(), LocalDate.now(), "absent");
+            model.registerAttendance(temp, student);
             //remove date from attendance list
         }
     }
