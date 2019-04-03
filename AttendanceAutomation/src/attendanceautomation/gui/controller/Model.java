@@ -39,6 +39,10 @@ public class Model
     public void registerAttendance(Attendance attendance, Student student){
         ptl.registerAttendance(attendance, student);
     }
+    
+    public void editAttendance(List<Attendance> attendance, Student student){
+        ptl.editAttendance(attendance, student);
+    }
             
     public double getPercentDaysForStudent(Student student, String day)
     {

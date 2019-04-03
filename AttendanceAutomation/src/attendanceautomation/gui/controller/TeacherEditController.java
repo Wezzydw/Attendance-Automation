@@ -8,6 +8,7 @@ package attendanceautomation.gui.controller;
 import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,13 +39,13 @@ public class TeacherEditController implements Initializable {
     private Label lblUser;
 
     private Student currentStudent;
+    private String radio = null;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        showTable();
     }    
     
     public void setStudent(Student student){
@@ -67,6 +68,7 @@ public class TeacherEditController implements Initializable {
         {
             radioPresent.selectedProperty().setValue(Boolean.TRUE);
         }
+        radio = "Present";
         
     }
 
@@ -82,6 +84,7 @@ public class TeacherEditController implements Initializable {
         {
             radioAbsent.selectedProperty().setValue(Boolean.TRUE);
         }
+        radio = "Absent";
     }
     private void showTable()
     {
@@ -97,5 +100,18 @@ public class TeacherEditController implements Initializable {
     @FXML
     private void onHandleEdit(ActionEvent event)
     {
+        if (radio != null){
+            for (Attendance attendance : currentStudent.getAttendanceDates1())
+            {
+                if (attendance.getDateAsDate().equals(LocalDate.now())){
+                    if (!attendance.getAbsense().equals(radio))
+                    {
+                        //need these functions/methods
+                        //attendance.setAbsense();
+                        //model.editAttendance(currentStudent, radio);
+                    }
+                }
+            }   
+        }
     }
 }

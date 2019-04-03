@@ -79,18 +79,44 @@ model = new Model();
 
     @FXML
     private void handleRegister(ActionEvent event) {
+        String radio = null;
+        boolean alreadyExist = false;
         if (radioPresent.selectedProperty().getValue())
         {
-           Attendance temp = new Attendance(student.getId(), LocalDate.now(), "present");
+           Attendance temp = new Attendance(student.getId(), LocalDate.now(), "Present");
            model.registerAttendance(temp, student);
             // add date to attendance list
+            radio = "Present";
         }
         else if (radioAbsent.selectedProperty().getValue())
         {
-            Attendance temp = new Attendance(student.getId(), LocalDate.now(), "absent");
+            Attendance temp = new Attendance(student.getId(), LocalDate.now(), "Absent");
             model.registerAttendance(temp, student);
             //remove date from attendance list
+            radio = "Absent";
         }
+        for (Attendance attendance : student.getAttendanceDates1())
+        {
+            if(attendance.getDateAsDate().equals(LocalDate.now())){
+                System.out.println("1111111111");
+                if(!attendance.getAbsense().equals(radio)){
+                    //edit attendance
+                    alreadyExist = true;
+                }
+                else if(attendance.getAbsense().equals(radio)){
+                    //do nothing
+                    alreadyExist = true;
+                }
+            }
+        }
+        System.out.println(alreadyExist);
+        if (!alreadyExist && radio!=null){
+            //model.registerAttendance
+            Attendance a1 = new Attendance(student.getId(), LocalDate.now(), radio);
+            model.registerAttendance(a1, student);
+            student.addAttendanceDate(LocalDate.now(), radio);
+        }
+        
     }
     
     public void setStudent(Student student)
