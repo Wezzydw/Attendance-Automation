@@ -37,11 +37,10 @@ public class Model
     }
     
     public void registerAttendance(Attendance attendance, Student student){
-        System.out.println("model 1 1");
         ptl.registerAttendance(attendance, student);
     }
     
-    public void editAttendance(List<Attendance> attendance, Student student){
+    public void editAttendance(Attendance attendance, Student student){
         ptl.editAttendance(attendance, student);
     }
             

@@ -92,9 +92,9 @@ model = new Model();
         for (Attendance attendance : student.getAttendanceDates1())
         {
             if(attendance.getDateAsDate().equals(LocalDate.now())){
-                System.out.println("1111111111");
                 if(!attendance.getAbsense().equals(radio)){
-                    //edit attendance
+                    model.editAttendance(new Attendance(student.getId(), LocalDate.now(), radio), student);
+                    //attendance.set eller attendance.edit
                     alreadyExist = true;
                 }
                 else if(attendance.getAbsense().equals(radio)){
@@ -103,7 +103,6 @@ model = new Model();
                 }
             }
         }
-        System.out.println(alreadyExist);
         if (!alreadyExist && radio!=null){
             //model.registerAttendance
             Attendance a1 = new Attendance(student.getId(), LocalDate.now(), radio);

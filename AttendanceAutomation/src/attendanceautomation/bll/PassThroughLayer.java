@@ -46,7 +46,7 @@ public class PassThroughLayer
         data.registerAttendance(attendance, student);
     }
     
-    public void editAttendance(List<Attendance> attendance, Student student){
+    public void editAttendance(Attendance attendance, Student student){
         data.editAttendance(attendance, student);
     }
 }

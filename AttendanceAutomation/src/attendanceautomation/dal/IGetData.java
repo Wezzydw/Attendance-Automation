@@ -26,5 +26,5 @@ public interface IGetData
     
     void registerAttendance(Attendance attendance, Student student);
     
-    void editAttendance(List<Attendance> attendance, Student student);
+    void editAttendance(Attendance attendance, Student student);
 }

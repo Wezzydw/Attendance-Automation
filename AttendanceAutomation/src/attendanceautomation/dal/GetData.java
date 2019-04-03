@@ -63,7 +63,7 @@ public class GetData implements IGetData{
     }
 
     @Override
-    public void editAttendance(List<Attendance> attendance, Student student)
+    public void editAttendance(Attendance attendance, Student student)
     {
         try
         {

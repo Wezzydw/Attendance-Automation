@@ -7,9 +7,12 @@ package attendanceautomation.gui.controller;
 
 import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,12 +43,20 @@ public class TeacherEditController implements Initializable {
 
     private Student currentStudent;
     private String radio = null;
+    private Model model;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try
+        {
+            // TODO
+            model = new Model();
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TeacherEditController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
     
     public void setStudent(Student student){
@@ -104,6 +115,8 @@ public class TeacherEditController implements Initializable {
                 if (attendance.getDateAsDate().equals(LocalDate.now())){
                     if (!attendance.getAbsense().equals(radio))
                     {
+                        Attendance a1  = tableTable.getSelectionModel().getSelectedItem();
+                        //model.editAttendance(attendance, currentStudent);
                         //need these functions/methods
                         //attendance.setAbsense();
                         //model.editAttendance(currentStudent, radio);

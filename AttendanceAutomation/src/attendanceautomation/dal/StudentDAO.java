@@ -89,18 +89,16 @@ public class StudentDAO {
         return ad;
     }
     
-    public void editAttendance(Student student, List<Attendance> attendance) throws SQLException{
+    public void editAttendance(Student student, Attendance attendance) throws SQLException{
         try (Connection con = conProvider.getConnection()) {
             String a = "UPDATE Attendance SET present = ? WHERE (studentId = ? AND date = ?);";
             PreparedStatement prst = con.prepareStatement(a);
             
-            for (Attendance attendance1 : attendance)
-            {
-                prst.setString(1, attendance1.getAbsense());
-                prst.setInt(2, student.getId());
-                prst.setString(3, attendance1.getDate());
-                prst.execute();
-            }
+            prst.setString(1, attendance.getAbsense());
+            prst.setInt(2, student.getId());
+            prst.setString(3, attendance.getDate());
+            prst.execute();
+            
             prst.close();
         } catch(SQLException ex){
             throw new SQLException("Can't edit attendance " + ex);
@@ -115,7 +113,6 @@ public class StudentDAO {
             prst.setString(2, attendance.getDate());
             prst.setString(3, attendance.getAbsense());
             prst.execute();
-            System.out.println("DATABASE");
         } catch(SQLException ex){
             
         }

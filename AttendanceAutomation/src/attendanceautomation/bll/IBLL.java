@@ -22,5 +22,5 @@ public interface IBLL
 
     public void registerAttendance(Attendance attendance, Student student);
     
-    public void editAttendance(List<Attendance> attendance, Student student);
+    public void editAttendance(Attendance attendance, Student student);
 }
