@@ -53,6 +53,7 @@ public class PassThroughLayerDB implements IBLL {
     @Override
     public void registerAttendance(Attendance attendance, Student student)
     {
+        System.out.println("passthrough");
         studentdata.regiserAttendance(student, attendance);
     }
 

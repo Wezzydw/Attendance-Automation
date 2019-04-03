@@ -115,6 +115,7 @@ public class StudentDAO {
             prst.setString(2, attendance.getDate());
             prst.setString(3, attendance.getAbsense());
             prst.execute();
+            System.out.println("DATABASE");
         } catch(SQLException ex){
             
         }
