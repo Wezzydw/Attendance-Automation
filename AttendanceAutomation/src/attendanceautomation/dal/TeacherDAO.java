@@ -31,6 +31,12 @@ public class TeacherDAO
         }
     }
     
+    /**
+     * Opretter et teacher object, med navn, efternavn, username og password
+     * og tilføjer til listen.
+     * @return en liste af Teachers
+     * @throws SQLException 
+     */
     public List<Teacher> getAllTeachersFromDB() throws SQLException {
         List<Teacher> allTeachers = new ArrayList();
 

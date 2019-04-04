@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,7 +24,11 @@ import java.util.List;
 public class StudentDAO {
 
     private DatabaseConnection conProvider;
-
+    
+    /**
+     * Opretter forbindelse til databasen
+     * @throws IOException 
+     */
     public StudentDAO() throws IOException {
         try {
             conProvider = new DatabaseConnection();
@@ -31,7 +36,14 @@ public class StudentDAO {
             throw new IOException("No database connection established " + ex);
         }
     }
-
+    
+    /**
+     * Henter fornavn i fName, efternavn i lName, du gættede det - username i
+     * username og password i password og tilføjer dem til listen.
+     * Metoden henter også den enkelte students attendance.
+     * @return en liste af students.
+     * @throws SQLException 
+     */
     public List<Student> getAllStudentsFromDB() throws SQLException {
         List<Student> allStudents = new ArrayList();
 
@@ -65,9 +77,15 @@ public class StudentDAO {
 
         return allStudents;
     }
-
+    
+    /**
+     * Opretter en ArrayList med attendance ud fra studentId, date og
+     * status for attendance (absent/present)
+     * @return en liste med attendance.
+     * @throws SQLException 
+     */
     private List<Attendance> getAttendance() throws SQLException {
-        List<Student> allStudents = new ArrayList();
+        
         List<Attendance> ad = new ArrayList();
 
         try (Connection con = conProvider.getConnection()) {
@@ -89,6 +107,12 @@ public class StudentDAO {
         return ad;
     }
     
+    /**
+     * Opdaterer attendance status ned i databasen.
+     * @param student
+     * @param attendance
+     * @throws SQLException 
+     */
     public void editAttendance(Student student, Attendance attendance) throws SQLException{
         try (Connection con = conProvider.getConnection()) {
             String a = "UPDATE Attendance SET present = ? WHERE (studentId = ? AND date = ?);";
@@ -105,6 +129,11 @@ public class StudentDAO {
         }
     }
     
+    /**
+     * Skriver attendance ned i databasen.
+     * @param student
+     * @param attendance 
+     */
     public void regiserAttendance(Student student, Attendance attendance){
         try (Connection con = conProvider.getConnection()) {
             String a = "INSERT INTO Attendance (studentId, date, present) VALUES(?,?,?);";

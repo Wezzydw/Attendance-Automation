@@ -20,22 +20,30 @@ public class Attendance {
     private StringProperty absense;
     private LocalDate ldate;
     private int id;
-
+    
+    
+    
+    /**
+     * Constructor til attendance
+     * @param id
+     * @param date
+     * @param absense 
+     */
     public Attendance(int id, LocalDate date, String absense) {
         this.id = id;
         ldate = date;
         this.date = new SimpleStringProperty(ldate.toString());
         this.absense = new SimpleStringProperty(absense);
     }
-
+    
     public String getDate() {
         return date.get();
     }
-
+    
     public LocalDate getDateAsDate() {
         return ldate;
     }
-
+    
     public String getAbsense() {
         return absense.get();
     }
@@ -44,11 +52,11 @@ public class Attendance {
         this.absense.set(absense);
     }
     
-    public StringProperty firstNameProperty() {
+    public StringProperty dateProperty() {
         return date;
     }
 
-    public StringProperty lastNameProperty() {
+    public StringProperty absenseProperty() {
         return absense;
     }
 

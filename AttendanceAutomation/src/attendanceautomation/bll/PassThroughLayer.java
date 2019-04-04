@@ -20,32 +20,45 @@ import java.util.List;
 public class PassThroughLayer implements IBLL
 {
     private IGetData data;
-
-//    public PassThroughLayer(IGetData getData)
+    
     public PassThroughLayer() throws IOException
     {
-        data = new GetData();
-//        data = getData;
-        
-        
+        data = new GetData();   
     }
     
     
-    
+    /**
+     * 
+     * @return alle students fra DB
+     */
     public List<Student> getAllStudents()
     {
         return data.getAllStudents();
     }
     
+    /**
+     * 
+     * @return alle teachers fra DB
+     */
     public List<Teacher> getAllTeachers() 
     {
         return data.getAllTeachers();
     }
     
+    /**
+     * Laver en ny attendance i DB
+     * @param attendance 
+     * @param student 
+     */
     public void registerAttendance(Attendance attendance, Student student){
         data.registerAttendance(attendance, student);
     }
     
+    /**
+     * Ændrer attendance i DB
+     * @param attendance
+     * @param student 
+     */
     public void editAttendance(Attendance attendance, Student student){
         data.editAttendance(attendance, student);
     }

@@ -27,7 +27,7 @@ public class PassThroughLayerDB implements IBLL {
     private TeacherDAO teacherdata;
     private GetData getData;
 
-//    public PassThroughLayer(IGetData getData)
+
     public PassThroughLayerDB() throws IOException {
         studentdata = new StudentDAO();
         teacherdata = new TeacherDAO();

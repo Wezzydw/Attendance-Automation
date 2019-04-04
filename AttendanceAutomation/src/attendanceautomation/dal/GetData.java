@@ -29,7 +29,10 @@ public class GetData implements IGetData{
         tdao = new TeacherDAO();
     }
     
-    
+    /**
+     * Henter alle students fra DB
+     * @return 
+     */
     @Override
     public List<Student> getAllStudents() {
       
@@ -40,7 +43,11 @@ public class GetData implements IGetData{
         }
         return null;
     }
-
+    
+    /**
+     * Henter alle teachers fra DB
+     * @return 
+     */
     @Override
     public List<Teacher> getAllTeachers() {
         try {
@@ -56,12 +63,22 @@ public class GetData implements IGetData{
         return null;
     }
 
+    /**
+     * Sender attendance ned til DB
+     * @param attendance
+     * @param student 
+     */
     @Override
     public void registerAttendance(Attendance attendance, Student student)
     {
         sdao.regiserAttendance(student, attendance);
     }
-
+    
+    /**
+     * Opdaterer attendance i DB
+     * @param attendance
+     * @param student 
+     */
     @Override
     public void editAttendance(Attendance attendance, Student student)
     {
