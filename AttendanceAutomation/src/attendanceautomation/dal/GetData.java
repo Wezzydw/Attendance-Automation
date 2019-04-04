@@ -73,5 +73,4 @@ public class GetData implements IGetData{
             Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }

@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author andreas
  */
-public class PassThroughLayer
+public class PassThroughLayer implements IBLL
 {
     private IGetData data;
 

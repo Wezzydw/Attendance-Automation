@@ -8,6 +8,7 @@ package attendanceautomation.bll;
 import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
+import attendanceautomation.dal.GetData;
 import attendanceautomation.dal.StudentDAO;
 import attendanceautomation.dal.TeacherDAO;
 import java.io.IOException;
@@ -24,12 +25,13 @@ public class PassThroughLayerDB implements IBLL {
 
     private StudentDAO studentdata;
     private TeacherDAO teacherdata;
+    private GetData getData;
 
 //    public PassThroughLayer(IGetData getData)
     public PassThroughLayerDB() throws IOException {
         studentdata = new StudentDAO();
         teacherdata = new TeacherDAO();
-
+        getData = new GetData();
     }
 
     public List<Student> getAllStudents() {
