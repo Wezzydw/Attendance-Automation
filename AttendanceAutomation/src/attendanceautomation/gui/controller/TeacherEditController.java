@@ -112,17 +112,13 @@ public class TeacherEditController implements Initializable {
         if (radio != null){
             for (Attendance attendance : currentStudent.getAttendanceDates1())
             {
-                if (attendance.getDateAsDate().equals(LocalDate.now())){
-                    if (!attendance.getAbsense().equals(radio))
-                    {
-                        Attendance a1  = tableTable.getSelectionModel().getSelectedItem();
-                        //model.editAttendance(attendance, currentStudent);
-                        //need these functions/methods
-                        //attendance.setAbsense();
-                        //model.editAttendance(currentStudent, radio);
-                    }
+                if (!attendance.getAbsense().equals(radio))
+                {
+                    Attendance a1  = tableTable.getSelectionModel().getSelectedItem();
+                    a1.setAbsense(radio);
+                    model.editAttendance(a1, currentStudent);
                 }
-            }   
+            }
         }
     }
 }

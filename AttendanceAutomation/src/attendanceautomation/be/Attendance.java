@@ -39,7 +39,11 @@ public class Attendance {
     public String getAbsense() {
         return absense.get();
     }
-
+    
+    public void setAbsense(String absense){
+        this.absense.set(absense);
+    }
+    
     public StringProperty firstNameProperty() {
         return date;
     }
