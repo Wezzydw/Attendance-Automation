@@ -9,6 +9,7 @@ import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
 import attendanceautomation.bll.IBLL;
+import attendanceautomation.bll.PassThroughLayer;
 import attendanceautomation.bll.PassThroughLayerDB;
 import java.io.IOException;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Model
 
     public Model() throws IOException
     {
-        ptl = new PassThroughLayerDB();
+        ptl = new PassThroughLayer();
     }
     
     public List<Student> getAllStudents()
