@@ -26,24 +26,47 @@ public class Model
         ptl = new PassThroughLayer();
     }
     
+    /**
+     * 
+     * @return en liste af alle students
+     */
     public List<Student> getAllStudents()
     {
         return ptl.getAllStudents();
     }
     
+    /**
+     * 
+     * @return en listte af alle teachers
+     */
     public List<Teacher> getAllTeachers()
     {
         return ptl.getAllTeachers();
     }
     
+    /**
+     * Sender et student object samt attendance object ned til registerAttendance.
+     * @param attendance
+     * @param student 
+     */
     public void registerAttendance(Attendance attendance, Student student){
         ptl.registerAttendance(attendance, student);
     }
     
+    /**
+     * Sender et student object samt attendance object ned til edit attendance.
+     * @param attendance
+     * @param student 
+     */
     public void editAttendance(Attendance attendance, Student student){
         ptl.editAttendance(attendance, student);
     }
-            
+    
+    /**
+     * @param student
+     * @param day
+     * @return Attendance i procenter.
+     */
     public double getPercentDaysForStudent(Student student, String day)
     {
         double count1 = 0;
@@ -65,6 +88,11 @@ public class Model
         return att;
     }
     
+    /**
+     * Får alle students attendance
+     * @param day
+     * @return et gennemsnit af alle students attendance.
+     */
      public double getPercentDaysForAllStudents(String day)
     {
         double count1 = 0;
