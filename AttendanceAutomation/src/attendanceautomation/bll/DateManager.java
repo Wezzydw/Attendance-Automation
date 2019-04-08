@@ -13,35 +13,15 @@ import java.util.List;
 
 public class DateManager {
 
-    public List<String> presentOrAbsent(Student student) {
-
-        List<String> erHer = new ArrayList();
-
-        for (LocalDate tonny : totalDays()) {
-            int counter = 0;
-            for (LocalDate irene : student.getAttendanceDates()) {
-
-                if (irene.isEqual(tonny)) {
-                    String present = "Present";
-                    erHer.add(present);
-                    break;
-
-                } else if (counter == student.getAttendanceDates().size()-1) {
-                    String absent = "Absent";
-                    erHer.add(absent);
-                }
-                counter++;
-            }
-        }
-
-        return erHer;
-    }
-
-    //total days in semester
+   
+    /**
+     * Looks at all dates from 1/1/2019, and sorts away saturday and sunday, 
+     * and returns a list without these
+     * @return
+     */
     public List<LocalDate> totalDays() {
 
         List<LocalDate> lld = new ArrayList();
-
         LocalDate ldstart = LocalDate.of(2019, Month.JANUARY, 1);
         LocalDate ldend = LocalDate.now();
 
@@ -51,7 +31,6 @@ public class DateManager {
                 ldstart = ldstart.plusDays(1);
             }
         }
-
         return lld;
     }
 }
