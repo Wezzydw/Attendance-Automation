@@ -41,19 +41,26 @@ public class LogInViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            // TODO
             model = new Model();
         } catch (IOException ex) {
             Logger.getLogger(LogInViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
 
+    /**
+     * Kalder checkUer metoden ved tryk på log-in knappen
+     * @param event 
+     */
     @FXML
     private void handleLogIn(ActionEvent event)
     {
         checkUser();
     }
     
+    /**
+     * Tjekker om en student eller teacher har logget ind.
+     * Kontrollerer brugernavn og password for student eller teacher.
+     */
     private void checkUser()
     {
         for (Student student : model.getAllStudents())
@@ -61,7 +68,6 @@ public class LogInViewController implements Initializable {
             
             if(student.getStudent(txtUser.getText(), txtPassword.getText()))
             {
-                System.out.println(student.getFirstName() + " " + student.getLastName() + " has logged in");
                 showStudentLogIn(student);
             }
         }
@@ -69,12 +75,15 @@ public class LogInViewController implements Initializable {
         {
             if(teacher.getTeacher(txtUser.getText(), txtPassword.getText()))
             {
-                System.out.println(teacher.getFirstName() + " " + teacher.getLastName() + " has logged in");
                 showTeacherLogIn(teacher);
             }
         }
     }
     
+    /**
+     * Viser viewet for students, når en student har logget ind.
+     * @param student 
+     */
     private void showStudentLogIn(Student student)
     {
         FXMLLoader loader = new FXMLLoader();
@@ -95,6 +104,10 @@ public class LogInViewController implements Initializable {
         stage.showAndWait();
     }
     
+    /**
+     * Viser viewet for en teacher, når en teacher har logget ind.
+     * @param teacher 
+     */
     private void showTeacherLogIn(Teacher teacher)
     {
         FXMLLoader loader = new FXMLLoader();
@@ -116,6 +129,11 @@ public class LogInViewController implements Initializable {
         stage.show();
         
     }
+    
+    /**
+     * Lukker programmet ved tryk på cancel
+     * @param event 
+     */
     @FXML
     private void handleCancel(ActionEvent event)
     {
@@ -123,6 +141,10 @@ public class LogInViewController implements Initializable {
         stage.close();
     }
 
+    /**
+     * Håndterer tryk på enter, som tryk på log-in knappen.
+     * @param event 
+     */
     @FXML
     private void handleEnterPressed(KeyEvent event)
     {
