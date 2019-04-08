@@ -100,20 +100,10 @@ public class TeacherEditController implements Initializable {
     @FXML
     private void onHandleEdit(ActionEvent event) {
         if (radio != null) {
-            for (Attendance attendance : currentStudent.getAttendanceDates1()) {
-                if (!attendance.getAbsense().equals(radio)) {
-                    Attendance a1 = tableTable.getSelectionModel().getSelectedItem();
-                    a1.setAbsense(radio);
-
-                    Thread t = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            model.editAttendance(a1, currentStudent);
-                        }
-                    });
-                    t.start();
-                }
-            }
+            tableTable.getSelectionModel().getSelectedItem().setAbsense(radio);
+            Attendance a1 = tableTable.getSelectionModel().getSelectedItem();
+            model.editAttendance(a1, currentStudent);
         }
     }
 }
+
