@@ -57,13 +57,22 @@ public class TeacherEditController implements Initializable {
             Logger.getLogger(TeacherEditController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /**
+     * Sætter den vlagte student til student og sætter labelet til students navn
+     * Derefter viser den tabelen med alle studens attendances
+     * @param student 
+     */
     public void setStudent(Student student) {
         lblUser.setText(student.getFirstName() + " " + student.getLastName());
         this.currentStudent = student;
         showTable();
     }
-
+    /**
+     * Ændre radioButtonPresent til at være checket af hvis man trykker på den,
+     * hvis Absent allerede er checket af vil den blive ikke checket af.
+     * Til sidst sætter den strengen radio til Present.
+     * @param event 
+     */
     @FXML
     private void rPresent(ActionEvent event) {
         if (radioAbsent.selectedProperty().getValue()) {
@@ -75,7 +84,13 @@ public class TeacherEditController implements Initializable {
         radio = "Present";
 
     }
-
+    
+    /**
+     * Ændre radioButtonAbsent til at være checket af hvis man trykker på den,
+     * hvis Present allerede er checket af vil den blive ikke checket af.
+     * Til sidst sætter den strengen radio til Absent.
+     * @param event 
+     */
     @FXML
     private void rAbsent(ActionEvent event) {
         if (radioPresent.selectedProperty().getValue()) {
@@ -86,17 +101,22 @@ public class TeacherEditController implements Initializable {
         }
         radio = "Absent";
     }
-
+    
+    /**
+     * Sætter tableViewets værdier ind på første og anden kolonne ud fra 
+     * students attendance.
+     */
     private void showTable() {
         columnC1.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
         columnC2.setCellValueFactory(cellData -> cellData.getValue().absenseProperty());
         tableTable.setItems(currentStudent.getAttendanceDates1());
-        //Hvis det her skal bruges skal vi have lavet klasse "absense" som holder styr på alle datoer i stedet
-        //Denne type kan kun tage en "property" fra hver i LISTEn af personer.
-        //Når vi arbejder med typen "student" må vi kun smide en liste af "Students" ind, ikke andet som setItems.
-
     }
-
+    
+    /**
+     * Når man trykker på edit knappen, ændre man om studenten var til stede 
+     * på dagen man har valgt.
+     * @param event 
+     */
     @FXML
     private void onHandleEdit(ActionEvent event) {
         if (radio != null) {
