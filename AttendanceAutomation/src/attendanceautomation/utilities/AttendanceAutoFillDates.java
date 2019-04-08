@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package attendanceautomation.bll;
+package attendanceautomation.utilities;
 
 import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
+import attendanceautomation.bll.PassThroughLayer;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
@@ -36,19 +37,19 @@ public class AttendanceAutoFillDates {
     }
     
     public void insertDatesToDb() throws SQLServerException, SQLException, IOException{
-        
-        PassThroughLayer ptl = new PassThroughLayer();
-        ptl.getAllStudents();
-        
+        MockData m = new MockData();
         try(Connection con = getConnection()){
         String sql = "INSERT INTO Attendance VALUES (?,?,?)";  
+        int count = 0;
         PreparedStatement statement = con.prepareStatement(sql);
             for (int i = 0; i < 7; i++){
-                for (Attendance att : ptl.getAllStudents().get(i).getAttendanceDates1()) {
+                for (Attendance att : m.getAllStudents().get(i).getAttendanceDates1()) {
+                    System.out.println(count);
                     statement.setInt(1, i+1);
                     statement.setString(2, att.getDate());
                     statement.setString(3, att.getAbsense());
                     statement.executeUpdate();
+                    count++;
                 }
             }
         }
