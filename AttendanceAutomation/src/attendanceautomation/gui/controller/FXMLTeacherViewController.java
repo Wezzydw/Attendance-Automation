@@ -52,7 +52,6 @@ public class FXMLTeacherViewController implements Initializable
 
     private Model model;
 
-    private Teacher teacher;
     private ObservableList<Student> allStudents = FXCollections.observableArrayList();
     private List<Student> allStudentssss = new ArrayList();
     @FXML
@@ -79,6 +78,11 @@ public class FXMLTeacherViewController implements Initializable
         }
     }
 
+    /**
+     * Når man trykker på edit knappen, åbnes et vindue over alle skoledage
+     * og teacher har mulighed for at rette til absent eller present.
+     * @param event 
+     */
     @FXML
     private void HandleEdit(ActionEvent event)
     {
@@ -98,6 +102,10 @@ public class FXMLTeacherViewController implements Initializable
         stage.show();
     }
 
+    /**
+     * indlæser listen over alle students i tableview.
+     * @param alleStudenter 
+     */
     public void setAttendanceTable(List<Student> alleStudenter)
     {
 
@@ -106,17 +114,26 @@ public class FXMLTeacherViewController implements Initializable
             allStudents.add(allStudent);
         }
 
-//        allStudentssss.addAll(alleStudenter);
         attendanceTable.setItems(allStudents);
         handleShowAllStudentLineChart(alleStudenter);
     }
 
+    /**
+     * Sætter labelet til den teacher som er logget ind.
+     * @param teacher 
+     */
     public void setTeacher(Teacher teacher)
     {
-        this.teacher = teacher;
         lblUser.setText(teacher.getFirstName() + " " + teacher.getLastName());
     }
 
+    /**
+     * Indlæser attendance for alle students når teacher er logget ind. Når der
+     * vælges en student, indlæses den valgte students attendance, og tilføjes
+     * tableviewet.
+     * @param student
+     * @return linechart
+     */
     private LineChart buildStudentLineChart(Student student)
     {
         CategoryAxis xAxis = new CategoryAxis();
@@ -127,19 +144,22 @@ public class FXMLTeacherViewController implements Initializable
         lineChart.setTitle("Attendance");
         XYChart.Series series = new XYChart.Series();
         series.setName(student.getFirstName() + " " + student.getLastName());
-        //11 skal skiftes ud med et eller andet fra student.getMondayAttendance eller sådan noget
-        series.getData().add(new XYChart.Data<>("Mandag", model.getPercentDaysForStudent(student, "MONDAY")));//for monday student.attendancePersentageMondayProperty() eller noget i den stil
-        series.getData().add(new XYChart.Data<>("Tirsdag", model.getPercentDaysForStudent(student, "TUESDAY")));//for tuesday
-        series.getData().add(new XYChart.Data<>("Onsdag", model.getPercentDaysForStudent(student, "WEDNESDAY")));//for wednesday
-        series.getData().add(new XYChart.Data<>("Torsdag", model.getPercentDaysForStudent(student, "THURSDAY")));//for thursday
-        series.getData().add(new XYChart.Data<>("Fredag", model.getPercentDaysForStudent(student, "FRIDAY")));//for friday
+        series.getData().add(new XYChart.Data<>("Mandag", model.getPercentDaysForStudent(student, "MONDAY")));
+        series.getData().add(new XYChart.Data<>("Tirsdag", model.getPercentDaysForStudent(student, "TUESDAY")));
+        series.getData().add(new XYChart.Data<>("Onsdag", model.getPercentDaysForStudent(student, "WEDNESDAY")));
+        series.getData().add(new XYChart.Data<>("Torsdag", model.getPercentDaysForStudent(student, "THURSDAY")));
+        series.getData().add(new XYChart.Data<>("Fredag", model.getPercentDaysForStudent(student, "FRIDAY")));
 
         lineChart.getData().add(series);
 
         return lineChart;
     }
 
-    //Denne skal visses inden man har trykket på en elev, efter det skulle den skifte over til functionen oven over
+    /**
+     * Indlæser linechart for alle students gennemsnitlig attendance
+     * @param allStudents
+     * @return 
+     */
     private LineChart buildAllStudentLineChart(List<Student> allStudents)
     {
 
@@ -149,7 +169,7 @@ public class FXMLTeacherViewController implements Initializable
         yAxis.setLabel("Attendance %");
         LineChart<String, Number> lineChart = new LineChart<String, Number>(xAxis, yAxis);
         lineChart.setTitle("Attendance");
-// der er ike behov for 'forloop' da vi har getPercentDaysForAllStudents
+
         for (Student allStudent : allStudents)
         {
             XYChart.Series series = new XYChart.Series();
@@ -167,12 +187,19 @@ public class FXMLTeacherViewController implements Initializable
     }
     
 
-
+    /**
+     * sætter linechartet for den enkelte elev ind i midten af viewet
+     * @param student 
+     */
     private void handleShowStudentLineChart(Student student)
     {
         middlePane.setCenter(buildStudentLineChart(student));
     }
 
+    /**
+     * sætter linechartet for gennemsnitsattendance på alle elever ind i midten
+     * @param allStudents 
+     */
     private void handleShowAllStudentLineChart(List<Student> allStudents)
     {
         middlePane.setCenter(buildAllStudentLineChart(allStudents));

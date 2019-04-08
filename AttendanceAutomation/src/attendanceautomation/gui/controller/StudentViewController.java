@@ -80,7 +80,7 @@ model = new Model();
     @FXML
     private void handleRegister(ActionEvent event) {
         String radio = null;
-        boolean alreadyExist = false;
+//        boolean alreadyExist = false;
         if (radioPresent.selectedProperty().getValue())
         {
             radio = "Present";
@@ -89,25 +89,9 @@ model = new Model();
         {
             radio = "Absent";
         }
-        for (Attendance attendance : student.getAttendanceDates1())
-        {
-            if(attendance.getDateAsDate().equals(LocalDate.now())){
-                if(!attendance.getAbsense().equals(radio)){
-                    model.editAttendance(new Attendance(student.getId(), LocalDate.now(), radio), student);
-                    //attendance.set eller attendance.edit
-                    alreadyExist = true;
-                }
-                else if(attendance.getAbsense().equals(radio)){
-                    //do nothing
-                    alreadyExist = true;
-                }
-            }
-        }
-        if (!alreadyExist && radio!=null){
-            //model.registerAttendance
+        if (radio != null){
             Attendance a1 = new Attendance(student.getId(), LocalDate.now(), radio);
             model.registerAttendance(a1, student);
-            student.addAttendanceDate(LocalDate.now(), radio);
         }
         
     }
