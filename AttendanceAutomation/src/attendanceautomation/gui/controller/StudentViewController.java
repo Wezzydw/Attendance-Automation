@@ -7,7 +7,7 @@ package attendanceautomation.gui.controller;
 
 import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
-import attendanceautomation.dal.MockData;
+import attendanceautomation.utilities.MockData;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;

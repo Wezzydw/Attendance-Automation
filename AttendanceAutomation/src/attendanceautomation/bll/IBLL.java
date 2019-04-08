@@ -14,13 +14,32 @@ import java.util.List;
  *
  * @author andreas
  */
-public interface IBLL
-{
+public interface IBLL {
+
+    /**
+     * returnerer alle students
+     * @return
+     */
     public List<Student> getAllStudents();
 
-    public List<Teacher> getAllTeachers() ;
+    /**
+     * returnerer alle teachers
+     * @return
+     */
+    public List<Teacher> getAllTeachers();
 
+    /**
+     * Videresender den nye attendance 
+     * @param attendance
+     * @param student
+     */
     public void registerAttendance(Attendance attendance, Student student);
-    
+
+    /**
+     * Videresender den ændrede attendance og student.
+     * 
+     * @param attendance
+     * @param student
+     */
     public void editAttendance(Attendance attendance, Student student);
 }

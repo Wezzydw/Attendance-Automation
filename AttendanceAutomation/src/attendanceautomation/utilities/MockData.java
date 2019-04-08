@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package attendanceautomation.dal;
+package attendanceautomation.utilities;
 
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
