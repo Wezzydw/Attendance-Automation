@@ -76,7 +76,12 @@ model = new Model();
         }
     }    
     
-
+/**
+ * Metoden undersøger den valgte property og viser om der bliver valgt absent
+ * eller present.
+ * @param event 
+ */
+    
     @FXML
     private void handleRegister(ActionEvent event) {
         String radio = null;
@@ -95,7 +100,10 @@ model = new Model();
         }
         
     }
-    
+    /**
+     * Vælger studenten og fremviser dens information
+     * @param student 
+     */
     public void setStudent(Student student)
     {
         this.student = student;
@@ -103,7 +111,11 @@ model = new Model();
         showTable();
         handleShowLineChart(student);
     }
-
+/**
+ * Metoden holder styr på fraværsknapperne (present) så kun 1 kan være aktiv af 
+ * gangen
+ * @param event 
+ */
     @FXML
     private void rPresent(ActionEvent event)
     {
@@ -118,7 +130,11 @@ model = new Model();
         }
         
     }
-
+/**
+ * Metoden holder styr på fraværsknapperne (absent) så kun 1 kan være aktiv af
+ * gangen
+ * @param event 
+ */
     @FXML
     private void rAbsent(ActionEvent event)
     {
@@ -138,7 +154,9 @@ model = new Model();
     {
         showLogInScreen();
     }
-    
+    /**
+     * Vores login FXML loades og åbnes, stage sættes så den er klar til brug.
+     */
     private void showLogInScreen()
     {
         FXMLLoader loader = new FXMLLoader();
@@ -157,7 +175,12 @@ model = new Model();
         stage1.close();
         stage.show();
     }
-    private LineChart buildLineChart(Student student)//chart instead of void bar or line chart
+    /**
+     * Konstruere en graf og fravær
+     * @param student
+     * @return 
+     */
+    private LineChart buildLineChart(Student student)
     {
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
@@ -177,23 +200,25 @@ model = new Model();
         
         return lineChart;
     }
+    
+    /**
+     * Metoden placerer grafen i center af viewet.
+     * @param student 
+     */
     private void handleShowLineChart(Student student)
     {
         middlePane.setCenter(buildLineChart(student));
     }
-    private void showChartInMiddle()
-    {
-        
-    }
-    
+  
+    /**
+     * Metoden viser dataen i venstre kolonne af viewet, indeholder students
+     * og klasser
+     */
     private void showTable()
     {
         tViewColOne.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
         tViewColTwo.setCellValueFactory(cellData -> cellData.getValue().absenseProperty());
         tView.setItems(student.getAttendanceDates1());
-        //Hvis det her skal bruges skal vi have lavet klasse "absense" som holder styr på alle datoer i stedet
-        //Denne type kan kun tage en "property" fra hver i LISTEn af personer.
-        //Når vi arbejder med typen "student" må vi kun smide en liste af "Students" ind, ikke andet som setItems.
         
     }
 }
