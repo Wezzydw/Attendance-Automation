@@ -30,7 +30,6 @@ public class Student {
     private StringProperty date;
     private ObservableList<LocalDate> attendanceList;
     private ObservableList<Attendance> attendanceList1;
-    private DoubleProperty attendancePersentage;
     
     
     public Student(int id, String firstName, String lastName, String username, String password)
@@ -45,7 +44,6 @@ public class Student {
         date = new SimpleStringProperty();
         this.fullName = new SimpleStringProperty(firstName + " " + lastName);
         this.id = new SimpleIntegerProperty(id);
-        //this.attendancePersentage = new SimpleDoubleProperty(Math.random()*100);
     }
     public int getId()
     {

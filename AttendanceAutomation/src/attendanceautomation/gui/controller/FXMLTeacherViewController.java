@@ -7,10 +7,9 @@ package attendanceautomation.gui.controller;
 
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
-import attendanceautomation.gui.controller.TeacherEditController;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -49,13 +48,11 @@ public class FXMLTeacherViewController implements Initializable
     private TableColumn<Student, Number> attendancePercentageColumn;
     @FXML
     private Label lblUser;
-
-    private Model model;
-
-    private ObservableList<Student> allStudents = FXCollections.observableArrayList();
-    private List<Student> allStudentssss = new ArrayList();
     @FXML
     private BorderPane middlePane;
+
+    private Model model;
+    private ObservableList<Student> allStudents = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -64,33 +61,37 @@ public class FXMLTeacherViewController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
 
-        // TODO
         studentNameColumn.setCellValueFactory(cellData -> cellData.getValue().fullNameProperty());
         attendancePercentageColumn.setCellValueFactory(cellData -> cellData.getValue().attendancePersentageProperty());
-        
+
         attendanceTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> handleShowStudentLineChart(newValue));
 
-        try {
+        try
+        {
             model = new Model();
-        } catch (IOException ex) {
+        } catch (IOException ex)
+        {
             Logger.getLogger(FXMLTeacherViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     /**
-     * Når man trykker på edit knappen, åbnes et vindue over alle skoledage
-     * og teacher har mulighed for at rette til absent eller present.
-     * @param event 
+     * Når man trykker på edit knappen, åbnes et vindue over alle skoledage og
+     * teacher har mulighed for at rette til absent eller present.
+     *
+     * @param event
      */
     @FXML
     private void HandleEdit(ActionEvent event)
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/attendanceautomation/gui/view/TeacherEdit.fxml"));
-        try {
+        try
+        {
             loader.load();
-        } catch (IOException ex) {
+        } catch (IOException ex)
+        {
             System.out.println("Error" + ex);
         }
         TeacherEditController display = loader.getController();
@@ -104,7 +105,8 @@ public class FXMLTeacherViewController implements Initializable
 
     /**
      * indlæser listen over alle students i tableview.
-     * @param alleStudenter 
+     *
+     * @param alleStudenter
      */
     public void setAttendanceTable(List<Student> alleStudenter)
     {
@@ -120,7 +122,8 @@ public class FXMLTeacherViewController implements Initializable
 
     /**
      * Sætter labelet til den teacher som er logget ind.
-     * @param teacher 
+     *
+     * @param teacher
      */
     public void setTeacher(Teacher teacher)
     {
@@ -131,6 +134,7 @@ public class FXMLTeacherViewController implements Initializable
      * Indlæser attendance for alle students når teacher er logget ind. Når der
      * vælges en student, indlæses den valgte students attendance, og tilføjes
      * tableviewet.
+     *
      * @param student
      * @return linechart
      */
@@ -157,8 +161,9 @@ public class FXMLTeacherViewController implements Initializable
 
     /**
      * Indlæser linechart for alle students gennemsnitlig attendance
+     *
      * @param allStudents
-     * @return 
+     * @return
      */
     private LineChart buildAllStudentLineChart(List<Student> allStudents)
     {
@@ -174,22 +179,28 @@ public class FXMLTeacherViewController implements Initializable
         {
             XYChart.Series series = new XYChart.Series();
             series.setName(allStudent.getFirstName() + " " + allStudent.getLastName());
-            series.getData().add(new XYChart.Data<>("Mandag", model.getPercentDaysForAllStudents("MONDAY")));//for monday student.attendancePersentageMondayProperty() eller noget i den stil
-            series.getData().add(new XYChart.Data<>("Tirsdag", model.getPercentDaysForAllStudents("TUESDAY")));//for tuesday
-            series.getData().add(new XYChart.Data<>("Onsdag", model.getPercentDaysForAllStudents("WEDNESDAY")));//for wednesday
-            series.getData().add(new XYChart.Data<>("Torsdag", model.getPercentDaysForAllStudents("THURSDAY")));//for thursday
-            series.getData().add(new XYChart.Data<>("Fredag", model.getPercentDaysForAllStudents("FRIDAY")));//for friday
+            try
+            {
+                series.getData().add(new XYChart.Data<>("Mandag", model.getPercentDaysForAllStudents("MONDAY")));//for monday student.attendancePersentageMondayProperty() eller noget i den stil
+                series.getData().add(new XYChart.Data<>("Tirsdag", model.getPercentDaysForAllStudents("TUESDAY")));//for tuesday
+                series.getData().add(new XYChart.Data<>("Onsdag", model.getPercentDaysForAllStudents("WEDNESDAY")));//for wednesday
+                series.getData().add(new XYChart.Data<>("Torsdag", model.getPercentDaysForAllStudents("THURSDAY")));//for thursday
+                series.getData().add(new XYChart.Data<>("Fredag", model.getPercentDaysForAllStudents("FRIDAY")));//for fridayv
+            } catch (SQLException ex)
+            {
+                System.out.println("Error loading in percentage for all days for students " + ex);
+            }
 
             lineChart.getData().add(series);
         }
 
         return lineChart;
     }
-    
 
     /**
      * sætter linechartet for den enkelte elev ind i midten af viewet
-     * @param student 
+     *
+     * @param student
      */
     private void handleShowStudentLineChart(Student student)
     {
@@ -198,7 +209,8 @@ public class FXMLTeacherViewController implements Initializable
 
     /**
      * sætter linechartet for gennemsnitsattendance på alle elever ind i midten
-     * @param allStudents 
+     *
+     * @param allStudents
      */
     private void handleShowAllStudentLineChart(List<Student> allStudents)
     {

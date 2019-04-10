@@ -8,6 +8,7 @@ package attendanceautomation.bll;
 import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -20,20 +21,20 @@ public interface IBLL {
      * returnerer alle students
      * @return
      */
-    public List<Student> getAllStudents();
+    public List<Student> getAllStudents()throws SQLException;
 
     /**
      * returnerer alle teachers
      * @return
      */
-    public List<Teacher> getAllTeachers();
+    public List<Teacher> getAllTeachers()throws SQLException;
 
     /**
      * Videresender den nye attendance 
      * @param attendance
      * @param student
      */
-    public void registerAttendance(Attendance attendance, Student student);
+    public void registerAttendance(Attendance attendance, Student student)throws SQLException;
 
     /**
      * Videresender den ændrede attendance og student.
@@ -41,5 +42,5 @@ public interface IBLL {
      * @param attendance
      * @param student
      */
-    public void editAttendance(Attendance attendance, Student student);
+    public void editAttendance(Attendance attendance, Student student)throws SQLException;
 }

@@ -8,8 +8,8 @@ package attendanceautomation.dal;
 import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import attendanceautomation.be.Teacher;
+import java.sql.SQLException;
 import java.util.List;
-import javafx.collections.ObservableList;
 
 /**
  *
@@ -17,14 +17,14 @@ import javafx.collections.ObservableList;
  */
 public interface IGetData
 {
-    
-    List<Student> getAllStudents();
-    
-    List<Teacher> getAllTeachers();
-  
+
+    List<Student> getAllStudents() throws SQLException;
+
+    List<Teacher> getAllTeachers() throws SQLException;
+
     Student getStudent(String name);
-    
-    void registerAttendance(Attendance attendance, Student student);
-    
-    void editAttendance(Attendance attendance, Student student);
+
+    void registerAttendance(Attendance attendance, Student student) throws SQLException;
+
+    void editAttendance(Attendance attendance, Student student) throws SQLException;
 }

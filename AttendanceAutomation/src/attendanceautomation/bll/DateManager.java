@@ -5,7 +5,6 @@
  */
 package attendanceautomation.bll;
 
-import attendanceautomation.be.Student;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;

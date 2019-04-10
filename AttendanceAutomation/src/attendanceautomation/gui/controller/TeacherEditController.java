@@ -9,7 +9,7 @@ import attendanceautomation.be.Attendance;
 import attendanceautomation.be.Student;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,7 +51,6 @@ public class TeacherEditController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            // TODO
             model = new Model();
         } catch (IOException ex) {
             Logger.getLogger(TeacherEditController.class.getName()).log(Level.SEVERE, null, ex);
@@ -122,7 +121,13 @@ public class TeacherEditController implements Initializable {
         if (radio != null) {
             tableTable.getSelectionModel().getSelectedItem().setAbsense(radio);
             Attendance a1 = tableTable.getSelectionModel().getSelectedItem();
-            model.editAttendance(a1, currentStudent);
+            try
+            {
+                model.editAttendance(a1, currentStudent);
+            } catch (SQLException ex)
+            {
+                System.out.println("Error edit attendace in teacher for : " + currentStudent.getFirstName() + " " + currentStudent.getLastName() + " " + ex);
+            }
         }
     }
 }

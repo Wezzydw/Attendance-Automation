@@ -11,6 +11,7 @@ import attendanceautomation.be.Teacher;
 import attendanceautomation.bll.IBLL;
 import attendanceautomation.bll.PassThroughLayer;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public class Model
      * 
      * @return en liste af alle students
      */
-    public List<Student> getAllStudents()
+    public List<Student> getAllStudents()throws SQLException
     {
         return ptl.getAllStudents();
     }
@@ -39,7 +40,7 @@ public class Model
      * 
      * @return en listte af alle teachers
      */
-    public List<Teacher> getAllTeachers()
+    public List<Teacher> getAllTeachers()throws SQLException
     {
         return ptl.getAllTeachers();
     }
@@ -49,7 +50,7 @@ public class Model
      * @param attendance
      * @param student 
      */
-    public void registerAttendance(Attendance attendance, Student student){
+    public void registerAttendance(Attendance attendance, Student student)throws SQLException{
         ptl.registerAttendance(attendance, student);
     }
     
@@ -58,7 +59,7 @@ public class Model
      * @param attendance
      * @param student 
      */
-    public void editAttendance(Attendance attendance, Student student){
+    public void editAttendance(Attendance attendance, Student student)throws SQLException{
         ptl.editAttendance(attendance, student);
     }
     
@@ -93,7 +94,7 @@ public class Model
      * @param day
      * @return et gennemsnit af alle students attendance.
      */
-     public double getPercentDaysForAllStudents(String day)
+     public double getPercentDaysForAllStudents(String day) throws SQLException
     {
         double count1 = 0;
         double count2 = 0;

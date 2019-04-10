@@ -8,7 +8,6 @@ package attendanceautomation.be;
 import java.time.LocalDate;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.util.converter.LocalDateStringConverter;
 
 /**
  *
